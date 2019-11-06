@@ -1,0 +1,46 @@
+<div class="m-l-10">
+  <div class="col-md-12 p-all-0">
+    <div class="col-md-6 pull-left p-all-0 m-b-5">
+      <h4 class="text-color-label"><span *ngIf="isEdit">Edit - </span>{{assetData?.hardwareName}}<span *ngIf="assetData?.connectedUser != null"> - {{assetData?.connectedUser}}</span></h4>
+    </div>
+    <button class="btn btn-primary bg-set pull-right" *ngIf="!isEdit" (click)="onClickAssetEdit()">EDIT</button>
+  </div>
+  <div class="box" *ngIf="!isEdit">
+      <div *ngIf="dataLoader">
+          <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+      </div>
+      <div class="row">
+        <div class = "col-md-7" style="padding-left: 40px">
+            <label class="row col-md-12 fs-18 m-l-40">{{assetData?.hardwareName}} <span class="m-l-5" *ngIf="ipAddress != null">[{{ipAddress}}] </span><span class="m-l-5">, Site : {{assetData?.site?.name || 'Not Available'}}</span></label>
+            <label class="row col-md-12 m-l-40"><b>Discoverd From : </b> {{assetData?.sourceName || 'Not Avaialble'}}<span class="m-l-5">, <b>Location :</b> {{assetData?.location?.name || 'Not Available'}}</span><span class="m-l-5" *ngIf="!hostDetailsNotAvailable">, <b>Host :</b> <a class="pointer" style="font-size: 12px !important" (click)="onHost()"> {{assetHostDetails?.hostDetails?.hostName || 'Not Available'}}</a></span></label>
+            <a class="row col-md-12 m-l-40 pointer" *ngIf = "showSoftware" (click)="onHistory()"><i class="fa fa-history history-icon" aria-hidden="true"></i> Click here to view history</a>
+        </div>
+          <div class="col-md-3 offset-2" style="max-width:22.5%;padding:0px;background-color: #f6f6f6;
+          box-shadow: 1px 3px 5px grey;">
+            <div class="m-t-10 m-l-10">
+            <div class="row"><span class="col-md-4">Category</span><span class="col-md-8 form-field-color">{{assetData?.assetCategory?.name}}</span></div>
+            <div class="row m-t-10 mb-1"><span class="col-md-4">Status</span><span class="col-md-8 form-field-color">{{assetData?.assetStatus?.name}}</span></div>
+          </div>
+        </div>
+        </div>
+
+    <div class="m-b-10" style = "margin-top: -16px">
+      <mat-tab-group class="col-md-12 col-sm-12 p-all-0 m-t-15" (selectedTabChange) = "loadTabComponent($event)">
+        <mat-tab label="Administrative/Hardware Data">
+          <app-administrative-hardware-data  (ipInfo)="getIpInfo($event)"></app-administrative-hardware-data>
+        </mat-tab>
+        <mat-tab label="Software" *ngIf="showSoftware">
+          <app-ocs-software *ngIf="isSoftware"></app-ocs-software>
+        </mat-tab>
+        <mat-tab label="Relationship">
+          <app-relationship *ngIf = "isRelationship"></app-relationship>
+        </mat-tab>
+        <!-- <mat-tab label="FormsIO">
+          <app-forms-io></app-forms-io>
+        </mat-tab> -->
+      </mat-tab-group>
+    </div>
+  </div>
+  <div *ngIf="isEdit">
+    <app-edit-asset (submitEvent)="submitEventHandler($event)"></app-edit-asset>
+  </div>

@@ -1,0 +1,68 @@
+<div class="m-t-10">
+    <div class="box card-height">
+        <!-- <div class="lineUnder m-t-10">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 bg-lightGray pb-4" [hidden]="!showSearchbox">
+                <div class="col-md-12 big-text">Advanced Search</div>
+                <div class="formsFields">
+                    <form #searchForm="ngForm">
+                        <div class="row col-md-12">
+                            <div class="col-md-3 m-t-5">
+                                <label>Publisher : </label>
+                            </div>
+                            <div class="col-md-3 m-t-5">
+                                <label>Software Category : </label>
+                            </div>
+                            <div class="col-md-6">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <a class="openClose" style="pointer-events: none;cursor: not-allowed; background-color: grey" [hidden]="showSearchbox" (click)="showhideSearch()">
+            <i class="fa fa-search advanced-search-icon"></i>
+        </a>
+        <a class="openClose pointer" [hidden]="!showSearchbox" (click)="showhideSearch()">
+            <i class="fa fa-chevron-up advanced-search-icon"></i>
+        </a> -->
+
+
+
+        <label class="col-md-12 m-t-10">
+            <b>Total Records: </b>{{softwareObj.pagination?.totalElements}}</label>
+        <table-header [pageInfo]="softwareObj.pagination" (onChange)="onChangePagination($event)" [search]="true" [noOfRecord]="true"
+            [sort]="false"></table-header>
+        <div *ngIf="dataLoader">
+            <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+        </div>
+        <div class="table-part" *ngIf="!dataLoader">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <th class="center-all">Publisher</th>
+                        <th class="center-all">Name</th>
+                        <th class="center-all">Version</th>
+                        <th class="center-all">Folder</th>
+                        <th class="center-all">Installation Date</th>
+                    </thead>
+                    <tbody style="font-weight:600;" *ngFor="let software of softwareDetails">
+                        <tr class="bl-blue table-card">
+                            <td class="center-all">{{software.publisher || 'NA'}}</td>
+                            <td class="center-all">{{software.name || 'NA'}}</td>
+                            <td class="center-all">{{software.version || 'NA'}}</td>
+                            <td class="center-all">{{software.folder || 'NA'}}</td>
+                            <td class="center-all">{{software.installDate || 'NA'}}</td>
+                        </tr>
+                        <br>
+                    </tbody>
+                    <tbody *ngIf="softwareDetails.length == 0">
+                            <tr class="bl-blue table-card">
+                                    <td colspan="5" class="center-all">No Data Availble.</td>
+                            </tr>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

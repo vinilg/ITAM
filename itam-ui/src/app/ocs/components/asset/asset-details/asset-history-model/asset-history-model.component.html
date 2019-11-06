@@ -1,0 +1,31 @@
+<div class="card">
+    <h6 class="card-header card-header-color"><span class ="card-header-label">Asset - {{assetName}}</span></h6>
+    <div class="card-body">
+        <div class="table-part-suite" *ngIf="assetHistoryDetails?.length > 0">
+            <div class="col-md-12">
+              <table class="table">
+                <thead>
+                  <th class="center-all">Description</th>
+                  <th class="center-all">Updated Date</th>
+                </thead>
+                <tbody style="font-weight:600;">
+                  <tr class="bl-blue table-card" *ngFor="let history of assetHistoryDetails">
+                    <td class="center-all">Connected User Changed From <b>{{history.previousUser}} </b> to <b>{{history.currentUser}}</b></td>
+                    <td class="center-all" >{{history.updatedDate}}</td>
+                  </tr>
+                  <br>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="table-part" *ngIf="assetHistoryDetails?.length == 0">
+              <div>
+                  <h6 class="center-all" style="padding: 10px">No History Availble.</h6>
+              </div>
+          </div>
+         
+    </div>
+  </div>
+
+
+

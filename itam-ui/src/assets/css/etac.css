@@ -1,0 +1,315 @@
+body {
+    height: auto;
+    background-repeat: repeat;
+}
+
+.subNav-text {
+    font-family: 'Gotham A' !important;
+    font-weight: 100;
+    font-size: 10px !important;
+}
+
+.tata-logo {
+    margin-top: -90px;
+    margin-left: 30px;
+    width: 255px
+}
+
+.hamburger {
+    position: relative;
+    top: 9px;
+}
+
+#footer {
+    background: #4C83C4;
+    color: #fff;
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    float: left;
+    border-top: 1px #e8e8e8 solid;
+}
+
+#footer-links a {
+    border-left: 2px solid #fff;
+    padding: 0px 8px;
+    color: #fff;
+}
+
+ul#nav li>div {
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+ul#nav li:before, ul.subNav li:before {
+    padding: 10px 20px 40px 27px;
+    position: relative;
+    z-index: 11;
+    color: #FDFDF9;
+    top: 4px;
+    float: left;
+    width: 80px;
+}
+
+ul#nav li, ul.subNav li {
+    color: #FDFDF9;
+    width: 100%;
+    float: left;
+    padding: 0px;
+    font-size: 20px;
+    min-width: 80px;
+    min-height: 47px;
+}
+
+.icon-color {
+    cursor: pointer;
+    font-size: 15px;
+    /* color: #4C83C4; */
+}
+
+.nav-tabs>li {
+    font-size: 13px;
+}
+
+.badge {
+    font-weight: unset;
+    font-size: 10px;
+}
+
+.secondary-dark-outline-btn {
+    border: 2px solid #3d86c6;
+    font-size: 11px;
+    color: #3d86c6;
+    background-color: transparent;
+}
+
+.all-badge {
+    background-color: transparent !important;
+}
+
+.secondary-dark-outline-btn:hover {
+    border: 2px solid #3d86c6;
+    background-color: #3d86c6 !important;
+    /* font-size: 12px; */
+    color: #fff !important;
+}
+
+.secondary-dark-outline-btn:hover .fa-pencil {
+    color: #fff !important;
+}
+
+.container {
+    padding: 0;
+}
+
+.active-btn, .active-btn:hover {
+    background-color: #3d86c6;
+    color: #ffffff;
+    border: 2px solid #3d86c6;
+    transition: all 0.3s ease-out;
+    font-family: "Gotham-Bold";
+}
+
+.perform-action-btn {
+    margin-top: -85px;
+    padding-top: 6px;
+    margin-left: 170px;
+}
+
+.bg-darkGray, .alert-darkGray {
+    background-color: #404041 !important;
+    color: #fdfdff !important;
+    font-weight: bold;
+    border-radius: 5px !important;
+}
+
+.alert-dismissible .close {
+    position: relative !important;
+    top: -3px !important;
+    right: -11px !important;
+    opacity: 0.6 !important;
+    color: #fdfdff !important;
+}
+
+.showFilter {
+    color: #3d86c6 !important;
+    font-weight: 500;
+    background-color: #fdfdff !important;
+}
+
+.flex-container {
+    display: flex;
+    float: left;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-container>div {
+    margin-left: 10px;
+}
+
+.text-icon {
+    font-size: 22px;
+    width: 40px;
+    height: 40px;
+    line-height: 1.9em;
+    text-align: center;
+    border-radius: 50%;
+    background: #808080 !important;
+    vertical-align: middle;
+    color: #ffffff !important;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.selected-badge {
+    background-color: #3d86c6 !important;
+    color: #ffffff !important;
+    border-color: #3d86c6 !important;
+}
+
+.selected-badge i {
+    color: #ffffff !important;
+}
+
+.small-text {
+    font-size: 12px;
+}
+
+.active-btn, .active-btn:hover, .secondary-outline-btn:hover, .secondary-dark-outline-btn:hover {
+    background-color: #3d86c6;
+    color: #ffffff;
+    border: 2px solid #3d86c6;
+}
+
+.active-btn:focus, .secondary-outline-btn:focus:hover, .secondary-dark-outline-btn:focus:hover, .secondary-outline-btn:focus, .secondary-dark-outline-btn:focus {
+    background-color: #3d86c6;
+    border: 2px solid #3d86c6;
+    color: #e6e6e6;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+ul#nav span>li:after, ul#nav a>li:after, ul#nav span>li:hover {
+    height: 100%;
+    max-height: 100%;
+    background-color: #A7BE38;
+}
+
+.select2-results .select2-highlighted {
+    background: #3d86c6 !important;
+    color: #fff;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    background-color: #3d86c6 !important;
+}
+
+.custom-select.activate .option-wrapper, .custom-select.searchable.upword.activate .option-wrapper {
+    border: 1px solid #3d86c6 !important;
+    bottom: unset !important;
+    margin-top: -1px;
+}
+
+.btnNew {
+    color: #3d86c6 !important;
+    border-color: #3d86c6 !important;
+    background: transparent;
+    padding: 6px 8px !important;
+    min-width: 9.6rem;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    height: 2.0rem;
+    border-radius: 0.3rem;
+    font-family: 'Gotham' !important;
+}
+
+.btnNewActive {
+    color: #ffffff !important;
+    border-color: #3d86c6 !important;
+    background: #3d86c6 !important;
+    padding: 6px 8px !important;
+    min-width: 9.6rem;
+    text-transform: uppercase;
+    /* font-size: 0.7143rem; */
+    height: 2.0rem;
+    border-radius: 0.3rem;
+    font-size: 10px !important;
+    /* font-weight: 600 !important; */
+    font-family: 'Gotham' !important;
+}
+
+.btnNewActiveGlyhicon {
+    color: #ffffff !important;
+    border-color: #3d86c6 !important;
+    background: #3d86c6 !important;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    border-radius: 0.3rem;
+}
+
+.date-picker-input-glyph>.btn-default:not(.btn-link):not(.btn-flat) {
+    color: #ffffff;
+    border-color: #3d86c6 !important;
+    background: #3d86c6 !important;
+}
+
+.input-group-btn>.btn-default:not(.btn-link):not(.btn-flat) {
+    height: 34px;
+    color: #ffffff;
+    border-color: #3d86c6 !important;
+    background: #3d86c6 !important;
+}
+
+.btn-default:not(.btn-link):not(.btn-flat):not(:disabled):hover {
+    border-color: #3d86c6 !important;
+    background-color: #3d86c6 !important;
+    color: white !important;
+}
+
+.btn-primary:hover {
+    color: #3d86c6 !important;
+    border-color: #3d86c6 !important;
+}
+
+.form-horizontal .text-primary {
+    color: #3d86c6 !important;
+    font-size: medium;
+}
+
+.nav-tabs>li {
+    padding: 5px;
+}
+
+.nav-tabs>li.active {
+    padding: 5px;
+    background: #f1f1f2;
+    border-bottom: 4px solid #3d86c6;
+}
+
+.summaryTable-new {
+    border-collapse: separate !important;
+    border-spacing: 0 10px;
+}
+
+.tableBackground {
+    background-color: #f1f1f2;
+}
+
+.ngdialog.ngdialog-theme-default .ngdialog-content {
+    font-size: 13px !important;
+}
+
+thead {
+    background: none !important;
+}
+
+.height-550 {
+    height: 550px !important;
+}

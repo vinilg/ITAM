@@ -1,0 +1,26 @@
+<div class="card">
+    <h6 class="card-header card-header-color"><span class ="card-header-label">Asset Family - {{familyWiseCategoryDialogData.familyName}}</span></h6>
+    <div class="card-body">
+        <div class="table-part-suite">
+            <div class="col-md-12">
+              <table class="table">
+                <thead>
+                  <th class="center-all">Category</th>
+                  <th class="center-all">Count</th>
+                </thead>
+                <tbody style="font-weight:600;">
+                  <tr class="bl-blue table-card" *ngFor="let category of familyWiseCategoryDialogData.categoryData">
+                    <td class="center-all">{{category.name}}</td>
+                    <td class="center-all" >{{category.y}}</td>
+                  </tr>
+                  <br>
+                </tbody>
+              </table>
+            </div>
+          </div>
+         
+    </div>
+  </div>
+
+
+

@@ -1,0 +1,12 @@
+{
+    "allLocations" :[
+        {
+            "id": 1,
+            "name": "Chennai JTP"
+        },
+        {
+            "id" : 2,
+            "name" : "Mumbai VST"
+        }
+    ]
+}

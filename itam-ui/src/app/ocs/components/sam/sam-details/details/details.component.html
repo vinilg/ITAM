@@ -1,0 +1,110 @@
+<div *ngIf="dataLoader" class="m-t-25">
+    <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+  </div>
+<div class="row col-md-12 m-t-15 pl-0 pr-0 ml-0 mr-0" *ngIf = "!dataLoader">
+  <div class="box col-md-6 bg-gray" style="height:160px">
+    <div class="row">
+      <div class="col-md-4">
+        <i class="fa fa-download inst-icon" aria-hidden="true"></i>
+        <span class="inst-numb">{{softwareBasicDetails.installedCount}}</span>
+        <span class="inst-name">Installation(s)</span>
+      </div>
+      <div class="col-md-4">
+        <span class="inst-numb">{{softwareBasicDetails.licensedInstallationCount}}</span>
+        <span class="inst-name">Licensed</span>
+      </div>
+      <div class="col-md-4">
+        <span class="inst-numb" style="color:red !important">{{excludedAssetsCount}}</span>
+        <span class="inst-name" style="color:red">Excluded</span>
+      </div>
+    </div>
+    <hr class="m-t-20">
+    <div class="row m-t-30">
+      <div class="col-md-6">
+        <i class="fa fa-drivers-license-o inst-icon" aria-hidden="true"></i>
+        <span class="inst-numb">{{softwareBasicDetails.purchasedCount}}</span>
+        <span class="inst-name">Purchased License(s)</span>
+      </div>
+      <div class="col-md-6">
+        <span class="inst-numb" style="color:green !important">{{softwareBasicDetails.availableCount}}</span>
+        <span class="inst-name" style="color:green">Available License(s)</span>
+      </div>
+    </div>
+  </div>
+  <div class="box col-md-5 m-l-20" style="min-width: 48%;height: 160px">
+    <label class="span-color">Licensed Agreement Expiry</label>
+    <hr class="m-t-0">
+    <div class="m-l-20">
+      <p>
+        <span class="span-font-size">{{softwareBasicDetails.aggrementExpiredCount}}</span>
+        <span class="m-l-20 span-font-size">Expired</span>
+      </p>
+      <p>
+        <span class="span-font-size">{{softwareBasicDetails.licenseExpiredInNextSevenDays}}</span>
+        <span class="m-l-20 span-font-size">Agreement expires in next 7 days</span>
+      </p>
+      <p>
+        <span class="span-font-size">{{softwareBasicDetails.licenseExpiredInNextThirtyDays}}</span>
+        <span class="m-l-20 span-font-size">Agreement expires in next 30 days</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="row col-md-12 p-0 m-0 m-t-20">
+    <li class="col-md-6 list-group-item form-list">
+      <div class="row">
+        <span class="col-md-4 bg-gray form-label">Software</span>
+        <span class="col-md-8 form-field form-field-color">{{softwareBasicDetails.name}}</span>
+      </div>
+    </li>
+    <li class="col-md-6 list-group-item form-list">
+      <div class="row">
+        <span class="col-md-4 bg-gray form-label">Manufacturer</span>
+        <span class="col-md-8 form-field form-field-color">{{softwareBasicDetails.manufacturer.name}}</span>
+      </div>
+    </li>
+    <li class="col-md-6 list-group-item form-list">
+      <div class="row">
+        <span class="col-md-4 bg-gray form-label">Category</span>
+        <span class="col-md-8 form-field form-field-color">{{softwareBasicDetails.softwareCategory.name}}</span>
+      </div>
+    </li>
+    <li class="col-md-6 list-group-item form-list">
+      <div class="row">
+        <span class="col-md-4 bg-gray form-label">Type</span>
+        <span class="col-md-8 form-field form-field-color">{{softwareBasicDetails.softwareType.name}}</span>
+      </div>
+    </li>
+    <li class="col-md-6 list-group-item form-list">
+      <div class="row">
+        <span class="col-md-4 bg-gray form-label">Description</span>
+        <span class="col-md-8 form-field form-field-color">{{softwareBasicDetails.description  || 'NA'}}</span>
+      </div>
+    </li>
+    <li class="col-md-6 list-group-item form-list">
+      <div class="row">
+        <span class="col-md-4 bg-gray form-label">Software Suite</span>
+        <span class="col-md-8 form-field form-field-color" *ngIf="!isSuite">No</span>
+        <span class="col-md-8 form-field form-field-color" *ngIf="isSuite">Yes</span>
+      </div>
+    </li>
+  </div>
+  <div class="row col-md-12 p-0 m-0 m-t-20 m-b-5" *ngIf="isSuite">
+    <div class="card">
+      <div class="card-header">
+        <h6 class="text-color-label">Suite Component Software</h6>
+        <div  style="text-align: right;margin-top: -26px;">
+            <button class="btn btn-primary bg-set pull-right" style="padding: 0px 10px !important"(click)="onClickSoftwareSuiteAdd()" [disabled] = "true">ADD</button>
+      </div>
+      </div>
+      <div class="card-body">
+          <div class="m-l-5">
+              <p *ngFor="let suite of selectedSoftwareInfo.softwareSuiteComponent">
+                <i class="fa fa-remove" style="font-size:13px;color:red"></i>
+                <span class="m-l-20 span-font-size">{{suite.name}}</span>
+              </p>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>

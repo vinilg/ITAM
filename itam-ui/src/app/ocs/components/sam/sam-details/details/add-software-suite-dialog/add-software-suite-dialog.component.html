@@ -1,0 +1,30 @@
+<!-- <div class="card">
+  <h6 class="card-header text-color-label">Suite Component Software</h6>
+  <div class="card-body">
+      <div class="row">
+        <div class="col-md-5">
+          <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="suiteSoftwareList" [cdkDropListConnectedTo]="[doneList]" class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of suiteSoftwareList" cdkDrag>{{item.name}}</div>
+            <div class="example-box" *ngIf="suiteSoftwareList.length == 0">No items available</div>
+          </div>
+        </div>
+        <div class="col-md-1 offset-md-1">
+          <i class="fa fa-exchange exchange-icon" style="margin-left: -30px" aria-hidden="true"></i>
+        </div>
+        <div class="col-md-5">
+          <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="selectedSoftwareForSuite" [cdkDropListConnectedTo]="[todoList]"
+            class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of selectedSoftwareForSuite" cdkDrag>{{item.name}}</div>
+            <div class="example-box" *ngIf="selectedSoftwareForSuite.length == 0">No items available</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row m-t-15">
+        <button class="col-md-2 offset-md-4 btn btn-primary bg-set" (click)="onClickSoftwareSuiteAdd()">ADD</button>
+        <button class="col-md-2 btn btn-primary bg-set m-l-5" (click)="onClickSoftwareSuiteAdd()">CANCEL</button>
+      </div>
+
+  </div>
+</div> -->

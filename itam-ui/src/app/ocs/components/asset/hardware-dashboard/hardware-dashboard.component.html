@@ -1,0 +1,247 @@
+<div *ngIf="dataLoader">
+  <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+</div>
+<!-- <div class="row col-md-12 ml-0 mr-0 pull-left p-all-0 m-b-5" style="border-bottom: 2px solid grey">
+      <h4 class="text-color-label">Hardware Dashboard</h4>
+    </div> -->
+<!-- <div class="m-l-10" style="background-color: #f6f6f6" *ngIf="!dataLoader">
+  <div class="card col-md-12" style="box-shadow: 1px 2px 3px #2b95a5">
+    <div class="card-body">
+      <form #searchForm="ngForm">
+        <div class="row">
+          <div class="col-md-3">
+            <select class="form-control pull-right" name="location" id="location" style="border-color: #ccc;text-indent: 10px;" [(ngModel)]="dashboardSerachObj.location"> 
+              <option disabled="true" [ngValue]="undefined">Please Select Location</option>
+              <option [value]="location.id" *ngFor="let location of locations">{{location.name}}</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <select class="form-control pull-right" name="site" id="site" style="border-color: #ccc;text-indent: 10px;" [(ngModel)]="dashboardSerachObj.site">
+                <option disabled="true" [ngValue]="undefined">Please Select Site</option>
+              <option [value]="site.id" *ngFor="let site of sites">{{site.name}}</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+              <input type="submit" class="btn btn-primary bg-set text-uppercase m-l-10 pull-right" value="Search" (click)="searchDashboardData(dashboardSerachObj)">
+              <input type="button" class="btn btn-primary bg-set text-uppercase pull-right" value="Clear" (click)="clearFilters()">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div> -->
+  <div class="m-l-10" *ngIf="!dataLoader">
+  <div class="row">
+    <div class="col">
+      <div class="card bg-c-blue pointer" (click)="onAssetsTileClick('All')">
+        <div class="card-block">
+          <div class="row align-items-end">
+            <div class="col-8">
+              <span class="text-white count-font-size">{{baseAssetData?.totalAssets}}</span>
+            </div>
+            <div class="col-4 p-l-10">
+              <i class="fa fa-laptop label-icon" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer p-l-0">
+          <p class="text-white m-b-0 font-size-footer ml-2">
+            <!-- <i class="fa fa-laptop f-14 m-r-10 text-white"></i> -->
+            All Assets</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="col">
+      <div class="card bg-c-green update-card pointer" (click)="onAssetsTileClick('Active')">
+        <div class="card-block">
+          <div class="row align-items-end">
+            <div class="col-9">
+              <span class="text-white count-font-size">{{baseAssetData?.activeAssets}}</span>
+            </div>
+            <div class="col-3 p-l-0 p-r-0">
+              <i class="fa fa-desktop label-icon" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer p-l-0">
+          <p class="text-white m-b-0 font-size-footer ml-2">
+            <i class="fa fa-desktop text-white f-14 m-r-10"></i>
+            Active Assets</p>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="col">
+      <div class="card bg-c-green pointer" (click)="onAssetsTileClick('New Stock')">
+        <div class="card-block">
+          <div class="row align-items-end">
+            <div class="col-8">
+              <span class="text-white count-font-size">{{baseAssetData?.inStockAssets}}</span>
+            </div>
+            <div class="col-4 p-l-10">
+              <i class="fa fa-television label-icon" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer p-l-0">
+          <p class="text-white m-b-0 font-size-footer ml-2">
+            <!-- <i class="fa fa-television text-white f-14 m-r-10"></i> -->
+            In Stock Assets</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card bg-c-purple pointer" (click)="onAssetsTileClick('exceptActiveDiscoveringAssets')">
+        <div class="card-block">
+          <div class="row align-items-end">
+            <div class="col-8">
+              <span class="text-white count-font-size">{{baseAssetData?.exceptActiveDiscoveringAssets}}</span>
+            </div>
+            <div class="col-4 p-l-10">
+              <i class="fa fa-desktop label-icon" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer p-l-0">
+          <p class="text-white m-b-0 font-size-footer ml-2">
+            <!-- <i class="fa fa-television text-white f-14 m-r-10"></i> -->
+            Inactive Discovered Assets</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card bg-c-orange pointer" (click)="onAssetsTileClick('assetContractsExpiredInFifteenDays')">
+        <div class="card-block">
+          <div class="row align-items-end">
+            <div class="col-8">
+              <span class="text-white count-font-size">{{baseAssetData?.assetContractsExpiredInFifteenDays}}</span>
+            </div>
+            <div class="col-4 p-l-10">
+              <i class="fa fa-calendar label-icon" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer p-l-0">
+          <p class="text-white m-b-0 font-size-footer ml-2">
+            <!-- <i class="fa fa-calendar text-white f-14 m-r-10"></i> -->
+            AMC Expiring In 15 Days</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card bg-c-light-blue pointer" (click)="onAssetsTileClick('assetNotContactedInLastFortyFiveDays')">
+        <div class="card-block">
+          <div class="row align-items-end">
+            <div class="col-8">
+              <span class="text-white count-font-size">{{baseAssetData?.assetNotContactedInLastFortyFiveDays}}</span>
+            </div>
+            <div class="col-4 p-l-10">
+              <i class="fa fa-chain-broken label-icon" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer p-l-0">
+          <p class="text-white m-b-0 font-size-footer ml-2">
+            <!-- <i class="fa fa-chain-broken text-white f-14 m-r-10"></i> -->
+            Not Contacted In 45 Days</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col">
+      <div class="card asset-family-4 pointer" (click)="onAssetsTileClick('newlyAddedAssets')">
+        <div class="card-block">
+          <div class="row align-items-end">
+            <div class="col-8">
+              <span class="text-white count-font-size">{{baseAssetData?.newlyAddedAssets}}</span>
+            </div>
+            <div class="col-4 p-l-10">
+              <i class="fa fa-binoculars label-icon" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer p-l-0">
+          <p class="text-white m-b-0 ml-2">
+            <!-- <i class="fa fa-binoculars text-white f-14 m-r-10"></i> -->
+            Newly Discovered Assets</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container m-t-15" style="background-color: #ffffff">
+    <div class="row col-md-12 card-header px-0 pb-0">
+      <div class="col-md-6">
+        Asset By Category
+      </div>
+      <div class="form-group col-md-3 offset-md-3">
+        <select class="form-control pull-right" style="border-color: #ccc;text-indent: 10px;" (change)="onChangeStatusFilter($event)">
+          <option selected="selected" value="0">All</option>
+          <option [value]="status.id" *ngFor="let status of assetStatusMaster">{{status.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="card-body p-0 m-t-15">
+      <div class="chart-loader" *ngIf="categoryLoader">
+        <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+      </div>
+      <highcharts-chart [Highcharts]="Highcharts" [options]="assetCategoryChartOption" *ngIf="!categoryLoader"></highcharts-chart>
+    </div>
+  </div>
+  <div class="row m-t-15">
+      <div class="col" *ngFor="let assetFamily of assetByFamily | keyvalue; let i=index">
+          <div class="card asset-family-{{i}}">
+            <i class="fa fa-info-circle info-icon pointer" (click)="OnInfoClick(assetFamily.key)" aria-hidden="true"></i>
+            <div class="card-block p-t-0 pointer" (click)="onAssetsTileClick(assetFamily.key)">
+              <div class="row align-items-end">
+                <div class="col-8">
+                  <span class="text-white count-family-font-size">{{assetFamily.value}}</span>
+                </div>
+                <div class="col-4 p-l-10">
+                  <i class="fa asset-family-icon" [ngClass]="assetFamilyIcon[i]" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="row m-l-0">
+                  <span class="text-white f-14">{{assetFamily.key}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+  <div class="row m-t-15 mb-5">
+    <div class="col-md-4 p-r-0">
+      <div class="x_panel">
+        <div class="card-header px-0 py-2">
+          Server By Role
+        </div>
+        <div class="card-body p-0 m-t-15">
+          <!-- <highcharts-chart [Highcharts]="Highcharts" [options]="assetManufacturerChartOption"></highcharts-chart> -->
+          <highcharts-chart [Highcharts]="Highcharts" [options]="assetRoleOption"></highcharts-chart>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 p-r-0">
+      <div class="x_panel">
+        <div class="card-header px-0 py-2">
+          Asset By OS
+        </div>
+        <div class="card-body p-0 m-t-15">
+          <highcharts-chart [Highcharts]="Highcharts" [options]="assetOsOption"></highcharts-chart>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="x_panel">
+        <div class="card-header px-0 py-2">
+          Asset By Status
+        </div>
+        <div class="card-body p-0 m-t-15">
+          <highcharts-chart [Highcharts]="Highcharts" [options]="assetStatusChartOption"></highcharts-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,31 @@
+<div class="row col-md-12" *ngIf="_pageInfo">
+  <div class="col-md-4" *ngIf="search">
+    <div class="input-group">
+      <input autofocus type="text" class="form-control" [(ngModel)]="searchBox" placeholder="Type to search..." (keydown)="onkeypress($event)"
+        (keyup.enter)="onChangeTrigger()" />
+      <span class="input-group-addon">
+        <i class="fa" [ngClass]="isLoading ? 'fa-refresh fa-spin':'fa-search'"></i>
+      </span>
+    </div>
+  </div>
+  <div class="col-md-2" *ngIf="sort">
+    <select class="form-control" [(ngModel)]="_pageInfo.sort" (change)="onChangeTrigger()">
+    <option *ngFor="let s of sortBy" [value]="s.label">{{s.name}}</option>
+  </select>
+  </div>
+  <div class="col-md-2" *ngIf="noOfRecord">
+    <select class="form-control" [(ngModel)]="_pageInfo.size" (change)="onChangeTrigger()">
+      <option *ngFor="let s of size">{{s}}</option>
+    </select>
+  </div>
+  <div [ngClass]="[sort == true ? 'col-md-4':'col-md-6']">
+    <pagination [totalItems]="_pageInfo.totalElements" [itemsPerPage]="_pageInfo.size" [(ngModel)]="currentPage" [maxSize]="5"
+      class="pagination-sm float-right" previousText="&lsaquo;" nextText="&rsaquo;" (click)="onChangeTrigger()"></pagination>
+  </div>
+  <div [ngClass]="isLoading ? 'col-xs-12 spinner':''" *ngIf="loader">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>

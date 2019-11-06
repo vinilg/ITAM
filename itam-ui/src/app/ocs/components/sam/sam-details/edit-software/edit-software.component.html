@@ -1,0 +1,143 @@
+<!-- <div class="box">
+      <form #f="ngForm" (ngSubmit)="f.form.valid && onAddSoftware(softwareDetails)" novalidate >
+        <div class="box mb-4" style="background-color: #ffffff !important">
+            <div *ngIf="dataLoader">
+                <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+              </div>
+          <div class="row col-md-12">
+            <ng-container>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="offset-md-1 col-sm-3 col-form-label mandate text-right m-t-5">Software Name</label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control" name="softwareName" [(ngModel)]="softwareDetails.softwareName" #softwareName="ngModel" [ngClass]="{ 'input-error': f.submitted && softwareName.invalid }" required>
+                    <div *ngIf="f.submitted && softwareName.invalid" class="error-text">
+                       Software Name is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right mandate m-t-5">Version</label>
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control" name="version" [(ngModel)]="softwareDetails.version" #version="ngModel" [ngClass]="{ 'input-error': f.submitted && version.invalid }" required>
+                      <div *ngIf="f.submitted && version.invalid" class="error-text">
+                          <div *ngIf="version.errors.required">Version is required</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="offset-md-1 col-md-3 col-form-label mandate text-right">Software Type</label>
+                  <div class="col-md-7">
+                    <mat-form-field>
+                      <mat-select name="softType" [(ngModel)]="softwareDetails.softwareType" #softwareType="ngModel" required>
+                        <mat-option value="">Select</mat-option>
+                        <mat-option value="option1">Option 1</mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="(softwareType.invalid && (softwareType.touched || f.submitted))">
+                        Please select atleast one software type</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label text-right mandate">Software Category</label>
+                  <div class="col-md-7">
+                    <mat-form-field>
+                      <mat-select name="softwareCategory" [(ngModel)]="softwareDetails.softwareCategory" #softwareCategory="ngModel" required>
+                        <mat-option value="">Select</mat-option>
+                        <mat-option value="option1">Option 1</mat-option>
+                        <mat-option value="option2">Option 2</mat-option>
+                        <mat-option value="option3">Option 3</mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="(softwareCategory.invalid && (softwareCategory.touched || f.submitted))">
+                          Please select atleast one software category</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="offset-md-1 col-md-3 col-form-label mandate text-right">Manufacturer</label>
+                    <div class="col-md-7">
+                      <mat-form-field>
+                        <mat-select name="manufacturer" [(ngModel)]="softwareDetails.manufacturer" #manufacturer="ngModel" required>
+                          <mat-option value="">Select</mat-option>
+                          <mat-option value="option1">Option 1</mat-option>
+                          <mat-option value="option2">Option 2</mat-option>
+                          <mat-option value="option3">Option 3</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="(manufacturer.invalid && (manufacturer.touched || f.submitted))">
+                            Please select atleast one Manufacturer</mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label text-right">Description</label>
+                  <mat-form-field class="example-full-width col-sm-7">
+                      <textarea matInput name="description" [(ngModel)]="softwareDetails.description"></textarea>
+                    </mat-form-field>
+                </div>
+              </div>
+    
+              <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="offset-md-1 col-sm-3 col-form-label text-right">Software Suite</label>
+                    <mat-checkbox class="example-margin m-t-10 m-l-10" (change)="onChange(softwareDetails)"></mat-checkbox>
+                  </div>
+                </div>
+            </ng-container>
+          </div>
+          <div class="row" *ngIf="softwareDetails.isSuiteChecked">
+              <ng-container>
+                  <label class="col-md-2 col-form-label text-right mandate">Suite Component Software</label>
+                <div class="col-md-9 box" style="background-color: #f6f6f6">
+                  <div class="row">
+                  <div class="col-md-5">
+                      <div
+                      cdkDropList
+                      #todoList="cdkDropList"
+                      [cdkDropListData]="suiteSoftwareList"
+                      [cdkDropListConnectedTo]="[doneList]"
+                      class="example-list"
+                      (cdkDropListDropped)="drop($event)">
+                      <div class="example-box" *ngFor="let item of suiteSoftwareList" cdkDrag>{{item.name}}</div>
+                      <div class="example-box" *ngIf="suiteSoftwareList.length == 0">No items available</div>
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                      <i class="fa fa-exchange exchange-icon" aria-hidden="true"></i>
+                  </div>
+                  <div class="col-md-6">
+                      <div
+                      cdkDropList
+                      #doneList="cdkDropList"
+                      [cdkDropListData]="selectedSoftwareForSuite"
+                      [cdkDropListConnectedTo]="[todoList]"
+                      class="example-list"
+                      (cdkDropListDropped)="drop($event)">
+                      <div class="example-box" *ngFor="let item of selectedSoftwareForSuite" cdkDrag>{{item.name}}</div>
+                      <div class="example-box" *ngIf="selectedSoftwareForSuite.length == 0">No items available</div>
+                    </div>
+                    <div *ngIf="f.submitted && selectedSoftwareForSuite.length == 0" class="error-text">
+                        Please Select At Lease One Software To Make A Software Suite
+                    </div>
+                </div>
+              </div>
+              </div>
+              </ng-container>
+          </div>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-danger bg-set pull-right ml-3" (click)="onClickCancel()">CANCEL</button>
+          <button type="submit" class="btn btn-primary bg-set pull-right">SUBMIT</button>
+        </div>
+      </form>
+    </div> -->

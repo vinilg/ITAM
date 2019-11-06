@@ -1,0 +1,12 @@
+{
+    "allSites" : [
+        {
+            "id": 1,
+            "name" : "Chennai"
+        },
+        {
+            "id": 2,
+            "name" : "Mumbai"
+        }
+    ]
+}

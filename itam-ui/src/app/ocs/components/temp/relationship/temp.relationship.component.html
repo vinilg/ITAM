@@ -1,0 +1,14 @@
+<div class="m-t-25">
+
+    <div *ngIf="dataLoader" class="m-t-25">
+            <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+    </div>
+    <div class="box" *ngIf = "!noDataFound">
+    <div id="chart"></div>
+    </div>
+    <div class="box">
+        <div *ngIf="noDataFound">
+            <h6 class="center-all">No Data Availble.</h6>
+          </div>
+      </div>
+      </div>

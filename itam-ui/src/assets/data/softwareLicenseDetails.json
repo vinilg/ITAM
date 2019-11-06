@@ -1,0 +1,74 @@
+{
+    "allSoftwareLicenseDetails": [
+        {
+            "basicLicenseDetails": {
+                "id": 1,
+                "name": "Microsoft Office 2019"
+            },
+            "licenseType": {
+                "id": 1,
+                "name": "Individual"
+            },
+            "licenseCounts": {
+                "purchasedCount": 5,
+                "allocatedCount": 0,
+                "availableCount": 0
+            },
+            "manufacturer":"Microsoft Corporation",
+            "status":{
+                "id": 1,
+                "name": "Active"
+            },
+            "licenseKey":"sgdgdgfxyssw564753sgx",
+            "managedSoftwareDetails":{
+                "id":1,
+                "name": "Microsoft Office 2019"
+            },
+            "licenseOption":{
+                "id": 1,
+                "name": "Licensed"
+            },
+            "purchaseCost":2000,
+            "poNumber":"TCL-002",
+            "acquitionDate":"2019/05/14",
+            "expiryDate":"2019/06/13",
+            "installationsAloowed":5,
+            "description":"Microsoft Office Package"
+        },
+        {
+            "basicLicenseDetails": {
+                "id": 2,
+                "name": "Cisco AnyConnect Lic."
+            },
+            "licenseType": {
+                "id": 1,
+                "name": "Individual"
+            },
+            "licenseCounts": {
+                "purchasedCount": 5,
+                "allocatedCount": 0,
+                "availableCount": 0
+            },
+            "manufacturer":"Cisco",
+            "status":{
+                "id": 1,
+                "name": "Active"
+            },
+            "licenseKey":"seteeff2345",
+            "managedSoftwareDetails":{
+                "id":2,
+                "name": "Cisco AnyConnect Secure Mobility Client"
+            },
+            "licenseOption":{
+                "id": 1,
+                "name": "Licensed"
+            },
+            "purchaseCost":2000,
+            "poNumber":"TCL-003",
+            "acquitionDate":"2019/05/14",
+            "expiryDate":"2019/06/13",
+            "installationsAloowed":"5",
+            "description":"Cisco AnyConnect Lic."
+        }
+    ]
+}

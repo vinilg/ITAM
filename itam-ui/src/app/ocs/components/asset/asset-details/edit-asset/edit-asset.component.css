@@ -1,0 +1,7 @@
+:host ::ng-deep .dropdown-menu{
+    width:91% !important;
+}
+
+:host ::ng-deep .dropdown-item.active{
+    background-color: #2274a5 !important;
+}

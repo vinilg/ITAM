@@ -1,0 +1,26 @@
+<div class="card">
+    <h6 class="card-header">Installed Suite Component Software</h6>
+    <div class="card-body">
+        <div class="table-part-suite">
+            <div class="col-md-12">
+              <table class="table">
+                <thead>
+                  <th class="center-all">Software</th>
+                  <th class="center-all">Version</th>
+                </thead>
+                <tbody style="font-weight:600;">
+                  <tr class="bl-blue table-card" *ngFor="let suite of suiteComponents">
+                    <td class="center-all">{{suite.name}}</td>
+                    <td class="center-all" >{{suite.version}}</td>
+                  </tr>
+                  <br>
+                </tbody>
+              </table>
+            </div>
+          </div>
+         
+    </div>
+  </div>
+
+
+

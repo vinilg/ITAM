@@ -1,0 +1,38 @@
+<div class="m-l-10">
+  <div class="col-md-12 p-all-0">
+    <div class="col-md-6 pull-left p-all-0 m-b-5">
+      <h4 class="text-color-label">License - {{baseHeaderDetails?.licenseName}}</h4>
+    </div>
+    <button class="btn btn-primary bg-set pull-right ml-2 text-uppercase" [routerLink]="['/ocs/sam/licenses/edit/', licenseId]">EDIT</button>
+  </div>
+  <div class="box">
+    <div class="row">
+      <div class="col-md-7" style="padding-left: 40px">
+        <label class="row col-md-12 fs-18 m-l-40">{{baseHeaderDetails?.licenseName}}</label>
+        <label class="row col-md-12 m-t-10 m-l-40">Vendor : {{baseHeaderDetails?.vendor}}</label>
+      </div>
+      <div class="box col-md-3 offset-2" style="max-width:22.5%;padding:0px;background-color: #f6f6f6;
+      box-shadow: 1px 3px 5px grey;">
+        <div class="m-t-10 m-l-10">
+          <div class="row">
+            <span class="col-md-6">Purchased</span>
+            <span class="col-md-6 form-field-color">{{baseHeaderDetails?.purchaseCount}}</span>
+          </div>
+          <div class="row m-t-10 mb-1">
+            <span class="col-md-6">Available</span>
+            <span class="col-md-6 form-field-color">{{baseHeaderDetails?.availableCount}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="m-b-10" style="margin-top: -16px">
+      <mat-tab-group class="col-md-12 col-sm-12 p-all-0 m-t-15" (selectedTabChange)="loadTabComponent($event)">
+        <mat-tab label="License Info">
+          <app-license-info (baseHeaderInfo)="getBaseHeaderInfo($event)"></app-license-info>
+        </mat-tab>
+        <mat-tab label="Mapping Details">
+          <app-license-to-software-mappings *ngIf="flag.isMappedSoftwares"></app-license-to-software-mappings>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>

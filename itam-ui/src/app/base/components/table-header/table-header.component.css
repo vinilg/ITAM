@@ -1,0 +1,84 @@
+::ng-deep .pagination {
+    margin: 0 !important;
+  }
+
+  ::ng-deep .pagination .page-item.active .page-link {
+    margin-left: 5px;
+    border-radius: 50px !important;
+    padding: 2px 9px;
+    border: 1px solid #e3e3e3;
+    background-color: #2274a5 !important
+  }
+
+  ::ng-deep .pagination-page.page-item .page-link {
+    margin-left: 5px;
+    border-radius: 50px !important;
+    padding: 2px 9px;
+    border: 1px solid #e3e3e3;
+    /* background-color: #ea7926 !important */
+  }
+
+  ::ng-deep .pagination-prev.page-item .page-link {
+    margin-left: 5px;
+    border-radius: 0px !important;
+    padding: 2px 9px;
+    /* border: 1px solid #e3e3e3; */
+    /* background-color: #ea7926 !important */
+  }
+
+  /* li.pagination-prev.page-item.disabled.
+
+  li.pagination-page.page-item.ng-star-inserted */
+
+  ::ng-deep .pagination-sm > li:first-child > a, .pagination-sm > li:first-child > span,
+  ::ng-deep .pagination-sm > li:last-child > a, .pagination-sm > li:last-child > span {
+    border: none;
+    position: relative;
+    top: 1px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+  }
+
+  .spinner div {
+    width: 3pt;
+    height: 3pt;
+    position: absolute;
+    top: 85%;
+    background-color: #4c83c4;
+    animation: move 4s infinite cubic-bezier(.2, .64, .81, .23);
+  }
+
+  .input-group-addon{
+    padding: 8px 10px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    color: #2274a5 !important;
+    text-align: center;
+    background-color: #eee;
+    border-radius: 4px;
+  }
+
+  .spinner div:nth-child(2) {
+    animation-delay: 150ms;
+  }
+
+  .spinner div:nth-child(3) {
+    animation-delay: 300ms;
+  }
+
+  .spinner div:nth-child(4) {
+    animation-delay: 450ms;
+  }
+
+  @keyframes move {
+    0% {
+      left: 0;
+    }
+    75% {
+      left: 100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }

@@ -1,0 +1,114 @@
+.chart-tiles:not(:first-child):before{
+        content: "";
+        position: absolute;
+        left: 0;
+        height: 65px;
+        border-left: 2px solid #ADB2B5;
+        margin-top: 10px;
+    }
+
+    .high-chart-body{
+        display: flex;
+        justify-content: center;
+        background-color: #ffffff !important
+        }
+        
+    .card-body{
+            background-color: #ffffff;
+    }
+    .card-header{
+        background-color: #ffffff;
+        color:#73879C;
+        font-size: 20px;
+        font-weight: 400;
+        border-bottom:2px solid #E6E9ED;
+    }
+
+    .inst-icon{
+        color:#73879C;
+        margin-left: 15px;
+        margin-top: 10px;
+        font-size: 15px;
+    }
+
+    .label-text{
+        color:#73879C;
+        margin-top: .5rem!important;
+    }
+
+    .label-count{
+        color:#73879C;
+        font-weight: 700;
+        font-size: 40px;
+        margin-top: -7px;
+        margin-left: 10px;
+    }
+
+    .sub-text{
+        color:#1ABB9C;
+        font-size: 12px;
+        margin-top: -20px;
+    }
+
+    .x_panel{
+        width: 100%;
+        padding: 10px 17px;
+        display: inline-block;
+        border: 1px solid #E6E9ED;
+        -webkit-column-break-inside: avoid;
+        -moz-column-break-inside: avoid;
+        opacity: 1;
+        transition: all .2s ease;
+        background-color: #ffffff
+    }
+
+    .card{
+        border-radius: 5px;
+        box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+        border: none;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+    }
+    
+    .card-block{
+        padding: 1.25rem;
+    }
+    
+    .align-items-end{
+        align-items: flex-end!important;
+    }
+    
+    .text-white{
+        color: #fff!important;
+    }
+    
+    .label-icon{
+        font-size: 50px;
+    }
+    
+    .card-footer{
+        background-color: transparent;
+        border-top: 1px solid #fff;
+    }
+    
+    .bg-c-green{
+        background: linear-gradient(to right, #1ABB9C, #1ABB9C);
+    }
+    
+    .bg-c-light-orange{
+        background: linear-gradient(to right, #3498DB, #3498DB);
+    }
+    
+    .bg-c-yellow{
+        background: linear-gradient(to right, #9B59B6, #9B59B6)
+    }
+    
+    .bg-c-light-blue{
+        background: linear-gradient(to right, #2b95a5, #2b95a5);
+    }
+    
+    .count-font-size{
+        font-size: 33px !important;
+    }

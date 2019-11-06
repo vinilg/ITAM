@@ -1,0 +1,294 @@
+{
+    "allSoftwareInstallationsDetails": [
+        {
+            "softwareDetail": {
+                "id": 1,
+                "name": "Microsoft Office 365 ProPlus - en-us"
+            },
+            "softwareLicenseCount": {
+                "licensedCount": 5,
+                "unlicensedCount": 0
+            },
+            "licenseAllocationDetail": [
+                {
+                    "assetDetails": {
+                        "id": 2,
+                        "assetsName": "DESKTOP-KF1V8QH",
+                        "connectedUser": "MIRNALINI T V"
+                    },
+                    "installedOn": "2018/06/12",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 3,
+                        "assetsName": "TCL60013532784",
+                        "connectedUser": "ARUN MANI"
+                    },
+                    "installedOn": "2018/06/15",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 11,
+                        "assetsName": "DESKTOP-8RDMQ0C",
+                        "connectedUser": "ArthiD"
+                    },
+                    "installedOn": "2018/06/15",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 13,
+                        "assetsName": "DESKTOP-9GF76O5",
+                        "connectedUser": "KARTHIKA MANI"
+                    },
+                    "installedOn": "2017/02/12",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 14,
+                        "assetsName": "TCL60009268370",
+                        "connectedUser": "ArunMuru"
+                    },
+                    "installedOn": "2018/06/12",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                }
+            ],
+            "unlicensedRecordData": []
+        },
+        {
+            "softwareDetail": {
+                "id": 2,
+                "name": "Cisco AnyConnect Secure Mobility Client"
+            },
+            "softwareLicenseCount": {
+                "licensedCount": 5,
+                "unlicensedCount": 0
+            },
+            "licenseAllocationDetail": [
+                {
+                    "assetDetails": {
+                        "id": 2,
+                        "assetsName": "DESKTOP-KF1V8QH",
+                        "connectedUser": "MIRNALINI T V"
+                    },
+                    "installedOn": "2018/06/12",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 3,
+                        "assetsName": "TCL60013532784",
+                        "connectedUser": "ARUN MANI"
+                    },
+                    "installedOn": "2018/06/15",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 11,
+                        "assetsName": "DESKTOP-8RDMQ0C",
+                        "connectedUser": "ArthiD"
+                    },
+                    "installedOn": "2018/06/15",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 13,
+                        "assetsName": "DESKTOP-9GF76O5",
+                        "connectedUser": "KARTHIKA MANI"
+                    },
+                    "installedOn": "2017/02/12",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 14,
+                        "assetsName": "TCL60009268370",
+                        "connectedUser": "ArunMuru"
+                    },
+                    "installedOn": "2018/06/12",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                }
+            ],
+            "unlicensedRecordData": []
+        },
+        {
+            "softwareDetail": {
+                "id": 3,
+                "name": "Google Chrome"
+            },
+            "softwareLicenseCount": {
+                "licensedCount": 5,
+                "unlicensedCount": 0
+            },
+            "licenseAllocationDetail": [
+                {
+                    "assetDetails": {
+                        "id": 2,
+                        "assetsName": "DESKTOP-KF1V8QH",
+                        "connectedUser": "MIRNALINI T V"
+                    },
+                    "installedOn": "2018/06/12",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 3,
+                        "assetsName": "TCL60013532784",
+                        "connectedUser": "ARUN MANI"
+                    },
+                    "installedOn": "2018/06/15",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 11,
+                        "assetsName": "DESKTOP-8RDMQ0C",
+                        "connectedUser": "ArthiD"
+                    },
+                    "installedOn": "2018/06/15",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 13,
+                        "assetsName": "DESKTOP-9GF76O5",
+                        "connectedUser": "KARTHIKA MANI"
+                    },
+                    "installedOn": "2017/02/12",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 14,
+                        "assetsName": "TCL60009268370",
+                        "connectedUser": "ArunMuru"
+                    },
+                    "installedOn": "2018/06/12",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                }
+            ],
+            "unlicensedRecordData": []
+        },
+        {
+            "softwareDetail": {
+                "id": 4,
+                "name": "Python Launcher"
+            },
+            "softwareLicenseCount": {
+                "licensedCount": 5,
+                "unlicensedCount": 0
+            },
+            "licenseAllocationDetail": [
+                {
+                    "assetDetails": {
+                        "id": 2,
+                        "assetsName": "DESKTOP-KF1V8QH",
+                        "connectedUser": "MIRNALINI T V"
+                    },
+                    "installedOn": "2018/06/12",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 3,
+                        "assetsName": "TCL60013532784",
+                        "connectedUser": "ARUN MANI"
+                    },
+                    "installedOn": "2018/06/15",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 11,
+                        "assetsName": "DESKTOP-8RDMQ0C",
+                        "connectedUser": "ArthiD"
+                    },
+                    "installedOn": "2018/06/15",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 13,
+                        "assetsName": "DESKTOP-9GF76O5",
+                        "connectedUser": "KARTHIKA MANI"
+                    },
+                    "installedOn": "2017/02/12",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 14,
+                        "assetsName": "TCL60009268370",
+                        "connectedUser": "ArunMuru"
+                    },
+                    "installedOn": "2018/06/12",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                }
+            ],
+            "unlicensedRecordData": []
+        },
+        {
+            "softwareDetail": {
+                "id": 5,
+                "name": "Conexant ISST Audio"
+            },
+            "softwareLicenseCount": {
+                "licensedCount": 5,
+                "unlicensedCount": 0
+            },
+            "licenseAllocationDetail": [
+                {
+                    "assetDetails": {
+                        "id": 2,
+                        "assetsName": "DESKTOP-KF1V8QH",
+                        "connectedUser": "MIRNALINI T V"
+                    },
+                    "installedOn": "2018/06/12",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 3,
+                        "assetsName": "TCL60013532784",
+                        "connectedUser": "ARUN MANI"
+                    },
+                    "installedOn": "2018/06/15",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 11,
+                        "assetsName": "DESKTOP-8RDMQ0C",
+                        "connectedUser": "ArthiD"
+                    },
+                    "installedOn": "2018/06/15",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 13,
+                        "assetsName": "DESKTOP-9GF76O5",
+                        "connectedUser": "KARTHIKA MANI"
+                    },
+                    "installedOn": "2017/02/12",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                },
+                {
+                    "assetDetails": {
+                        "id": 14,
+                        "assetsName": "TCL60009268370",
+                        "connectedUser": "ArunMuru"
+                    },
+                    "installedOn": "2018/06/12",
+                    "allcatedLicenseKey": "sgdgdgfxyssw564753sgx"
+                }
+            ],
+            "unlicensedRecordData": []
+        }
+    ]
+}

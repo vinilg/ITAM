@@ -1,0 +1,46 @@
+<nav class="navbar fixed-top">
+  <button class="navbar-toggler" type="button" (click)="onMenuToggle();">
+    <span class="icon-menu"></span>
+  </button>
+  <a class="navbar-brand mr-auto">
+    <img src="assets/images/tata-communication.png" alt="TATA COMMUNICATION">
+  </a>
+  <!--Navigation-->
+   <ul class="nav justify-content-end align-self-end primary-navigation">
+    <li class="nav-item login-link dropdown">
+      <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="javascript:;">
+        <span class="icon-profile"></span>
+        {{userName}}
+      </a>
+      <ul class="dropdown-menu dropdown-menu-form" role="menu">
+        <li class="card">
+          <!-- <h5 class="card-title">My Account</h5> -->
+          <div class="card-body">
+            <ul class="my-account-nav">
+              <li><a class="tracking" (click)="onLogout()">Logout </a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <!-- <a class="navbar-brand "><img src="assets/images/tata-logo.png" alt="TATA"></a> -->
+</nav>
+
+<!--Sidebar Naviagation-->
+<div class="sidenavbar" [ngClass]="{'sidenavbar-toggle': menuToggle}" id="sidenavbar">
+  <ul class="list-unstyled d-flex flex-column sidemenu pb-3">
+    <li [ngClass]="{'active': isActiveUrl(obj.value) || obj.showSubmenu}" *ngFor="let obj of allDetails.leftMenu">
+      <a [routerLink]="obj.value" (click)="itemSelected(obj)">
+        <i class="fa d-block mb-3 " [ngClass]="obj.icon"></i>{{obj.label}}</a>
+      <ul *ngIf="obj.child && obj.showSubmenu" class="subNav">
+        <li [ngClass]="{'active': child.selected}" *ngFor="let child of obj.child">
+          <a [routerLink]="child.value" (click)="childSeleted(child)">
+            <i class="fa d-block mb-3" [ngClass]="child.icon"></i>{{child.label}}
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<!-- Sidebar Naviagation Ends -->

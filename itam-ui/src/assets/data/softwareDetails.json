@@ -1,0 +1,83 @@
+{
+    "basicSoftwareDetails":[{
+        "softwareDetail":{
+            "id":1,
+            "name":"Microsoft Office 365 ProPlus - en-us"
+        },
+        "manufacturer":"Microsoft Corporation",
+        "softwareCategory":{
+            "id":1,
+            "name":"Others"
+        },
+        "softwareType":{
+            "id":1,
+            "name":"Managed"
+        },
+        "noLicenseInfoAvailable": true
+    },
+    {
+        "softwareDetail":{
+            "id":2,
+            "name":"Cisco AnyConnect Secure Mobility Client"
+        },
+        "manufacturer":"Cisco",
+        "softwareCategory":{
+            "id":1,
+            "name":"Others"
+        },
+        "softwareType":{
+            "id":1,
+            "name":"Managed"
+        },
+        "noLicenseInfoAvailable": true
+    },
+    {
+        "softwareDetail":{
+            "id":3,
+            "name":"Google Chrome"
+        },
+        "manufacturer":"Google",
+        "softwareCategory":{
+            "id":2,
+            "name":"Internet"
+        },
+        "softwareType":{
+            "id": 5,
+            "name": "Freeware"
+        },
+
+        "noLicenseInfoAvailable": false
+    },
+    {
+        "softwareDetail":{
+            "id":4,
+            "name":"Python Launcher"
+        },
+        "manufacturer":"Python",
+        "softwareCategory":{
+            "id":3,
+            "name":"Development"
+        },
+        "softwareType":{
+            "id": 6,
+            "name": "Unidentified"
+        },
+        "noLicenseInfoAvailable": false
+    },
+    {
+        "softwareDetail":{
+            "id":5,
+            "name":"Conexant ISST Audio"
+        },
+        "manufacturer":"Conexant",
+        "softwareCategory":{
+            "id":1,
+            "name":"Multimedia"
+        },
+        "softwareType":{
+            "id": 4,
+            "name": "Prohibited"
+        },
+        "noLicenseInfoAvailable": false
+    }]
+}

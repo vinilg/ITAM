@@ -1,0 +1,37 @@
+<div class="m-l-10">
+  <div class="col-md-6 pull-left p-all-0 m-b-0">
+    <h4 class="text-color-label pd-0 m-0">Delta </h4>
+    <p style="color: #2274a5" *ngIf = "lastDeltaDate != null">Last updated date : {{lastDeltaDate}}</p>
+  </div>
+  <div class="box">
+    <!-- <div>
+      <button type="button" class="btn btn-primary pull-right  m-l-10" (click)="openModall(template)">Merge</button>
+      <button type="button" class="btn btn-primary pull-right" (click)="updateDelta()">Update</button>
+    </div> -->
+    <mat-tab-group class="col-md-12 col-sm-12 p-all-0 m-t-0" (selectedTabChange)=getSelectedTab($event)>
+      <mat-tab label="Administrative/Hardware Data">
+        <app-delta-hardware (lastDeltaDate)="getDeltaDate($event)"></app-delta-hardware>
+      </mat-tab>
+      <!-- <mat-tab label="Software">
+        <app-delta-software *ngIf="showSoftware"></app-delta-software>
+      </mat-tab> -->
+      <mat-tab label="Scan Now">
+        <app-scan *ngIf = "showScanNow"></app-scan>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+
+<!-- <ng-template #template>
+  <div class="modal-body text-center">
+    <p style="font-size: 18px;">Are you sure? Do you want to merge ?</p>
+    <button type="button" class="btn btn-primary" (click)="confirm()">Yes</button>
+    <button type="button" class="btn btn-danger m-l-10" (click)="decline()">No</button>
+  </div>
+</ng-template>
+
+<ng-template #updateTemplate>
+  <div class="modal-body text-center">
+    <p>Delta updated successfully !!!</p>
+  </div> -->
+<!-- </ng-template> -->

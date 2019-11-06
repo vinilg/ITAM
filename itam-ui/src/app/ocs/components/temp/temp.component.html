@@ -1,0 +1,93 @@
+<div class = "m-l-10">
+  <div class="col-md-12 p-all-0">
+    <div class="col-md-6 pull-left p-all-0 m-b-5">
+      <h4 class="text-color-label">Temp-Asset</h4>
+    </div>
+  </div>
+  <div class="box">
+      <div class="lineUnder m-t-10">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 bg-lightGray pb-4" [hidden] = "!showSearchbox">
+                <div class="col-md-12 big-text">Advanced Search</div>
+                <div class="formsFields">
+                    <form #searchForm="ngForm">
+                        <div class="row col-md-12">
+                            <div class="col-md-3 m-t-5">
+                                <label>Asset Category : </label>
+                              <select class="form-control selectTopMargin" name="category" id="category" [(ngModel)] = "assetFilterObj.selectedCategory">
+                                  <option value="">Select</option>
+                                  <option value="{{category.id}}" *ngFor = "let category of availableCategories">{{category.name}}</option>                                 
+                             </select>
+                             <div class="errorMsg" [hidden]="!noFilterSelect" id="error">Select atleast one list.</div>
+                            </div>
+                            <div class="col-md-3 m-t-5">
+                                <label>Asset Status : </label>
+                                <select class="form-control selectTopMargin" name="status" id="status" [(ngModel)] = "assetFilterObj.selectedStatus">
+                                    <option value="">Select</option>
+                                    <option value="{{status.id}}" *ngFor = "let status of availableStatus">{{status.name}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="submit" class="btn btn-primary bg-set text-uppercase m-t-25 m-l-10 pull-right" value="Search" (click)="searchAssets(searchForm)">
+                                <input type="button" class="btn btn-primary bg-set text-uppercase m-t-25 pull-right" value="Clear" (click)="clearFilters()">
+                            </div>
+                        </div>
+                          
+                    </form>
+                </div>                     
+          </div>
+          </div>
+          <a class="openClose pointer" [hidden] = "showSearchbox" (click) = "showhideSearch()">
+                  <i class="fa fa-search advanced-search-icon"></i>
+              </a>
+          <a class="openClose pointer" [hidden] = "!showSearchbox" (click) = "showhideSearch()">
+              <i class="fa fa-chevron-up advanced-search-icon"></i>
+          </a>
+
+
+      <label class = "col-md-12 m-t-25"><b>Total Records: </b>{{allAssets.pagination?.totalElements}}</label>
+      <table-header [pageInfo]="allAssets.pagination" (onChange)="onChangeFilter($event)"
+      [search]="true" [noOfRecord]="true" [sort]="false"></table-header>
+    <div *ngIf="dataLoader">
+      <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+    </div>
+   <div class="table-part" *ngIf="!dataLoader && allAssets.assetData?.length > 0">
+      <div class="col-md-12">
+        <table class="table">
+          <thead>
+            <th class = "center-all">Id</th>
+            <th class="center-all">Asset Name</th>
+            <th class="center-all">Category</th>
+            <th class="center-all">Description</th>
+            <th class="center-all">User</th>
+            <th class="center-all">DeActivation Date</th>
+            <th class="center-all">Status</th>
+            <th class="center-all">Source</th>
+          </thead>
+          <tbody style="font-weight:600;" *ngFor="let asset of allAssets.assetData">
+            <tr class="bl-blue table-card">
+                <td class="center-all pointer">
+                    <a [routerLink]="['/ocs/temp-asset-details/',asset.basicHardware.id]" target="_blank">{{asset.basicHardware.id}}</a>
+                  </td>
+              <td class="center-all pointer">
+                <a [routerLink]="['/ocs/temp-asset-details/',asset.basicHardware.id]" target="_blank">{{asset.basicHardware.hardwareName}}</a>
+              </td>
+              <td class="center-all">{{asset.category || 'NA'}}</td>
+              <td class="center-all">{{asset.description || 'NA'}}</td>
+              <td class="center-all">{{asset.basicHardware.connectedUser || 'NA'}}</td>
+              <td class="center-all">{{asset.deactivationDate || 'NA'}}</td>
+              <td class="center-all">{{asset.status || 'NA'}}</td>
+              <td class="center-all">{{asset.basicHardware.sourceName || 'NA'}}</td>
+            </tr>
+            <br>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="table-part" *ngIf = "allAssets.assetData?.length == 0">
+        <div>
+            <h6 class = "center-all" style="padding: 10px">No Data Availble.</h6>
+          </div>
+      </div>
+  </div>
+</div>

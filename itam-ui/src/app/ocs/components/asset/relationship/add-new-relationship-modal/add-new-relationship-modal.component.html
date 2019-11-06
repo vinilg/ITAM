@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-12">
+        <label>CI Name</label>
+        <input type="text" class="form-control" disabled="true" [(ngModel)] = "selectedParentCi"/>
+      </div>
+    </div>
+    <div class="row mt-3">
+        <div class="form-group col-md-12 mb-0">
+            <label>Relationship Type</label>
+            <mat-form-field>
+            <mat-select name="relationshipType" [(ngModel)]="selectedType"
+                #relationshipType="ngModel" (selectionChange)= "onRelationTypeChange(selectedType)" required>
+                <mat-option [value]="0">Select</mat-option>
+                <mat-option [value]="relation.id" *ngFor="let relation of relationShipTypes">{{relation.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label> Related CI Name</label>
+        <div class="form-group">
+                <input [(ngModel)]="searchedCi"
+                autocomplete="off"
+                [disabled]="selectedType == 0"
+                name="relatedCi"
+                typeaheadMinLength = 4
+                [typeaheadAsync]="true"
+                [typeaheadItemTemplate]="customItemTemplate"
+                [typeahead]="relatedCiDataSource"
+                (typeaheadOnSelect)="onSelectRelatedCi($event)"
+                [typeaheadOptionsLimit]="20"
+                placeholder="Search....."
+                class="form-control">
+            </div>
+      </div>
+    </div>
+    <div class="col-md-12 mt-5 mb-5">
+      <button class="btn btn-primary text-uppercase bg-set-secondary pull-right ml-3" (click)="onCancelModel()">Cancel</button>
+      <button class="btn btn-primary bg-set pull-right text-uppercase" [disabled]="!relatedCiId" (click)="onClickAddRelationship()">Add</button>
+    </div>
+  </div>
+</div>
+<ng-template #customItemTemplate let-model="item" let-index="index">
+    <span>{{model.hardwareName}} ({{model.assetCategory.name}})</span>
+  </ng-template>

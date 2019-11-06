@@ -1,0 +1,80 @@
+<div class="box m-t-15">
+  <div *ngIf="dataLoader">
+    <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+  </div>
+  <div class="table-part max-height" *ngIf="!dataLoader && licenseToSoftwareMappings.length > 0">
+    <div class="col-md-12">
+      <table class="table">
+        <thead>
+          <th class="center-all">Software</th>
+          <th class="center-all">Version</th>
+          <!-- <th class="center-all">Purchased</th>
+          <th class="center-all">Installed</th>
+          <th class="center-all">Available</th> -->
+          <th class="center-all">Compliance Type</th>
+          <th class="center-all">Category</th>
+          <th class="center-all">Manufacturer</th>
+          <th class="center-all">Type</th>
+        </thead>
+        <tbody style="font-weight:600;" *ngFor="let software of licenseToSoftwareMappings">
+          <tr class="bl-blue table-card">
+              <td class="center-all pointer">
+                  <div class="col-md-8 offset-md-3 p-0">
+                      <a [routerLink]="['/ocs/sam-details/',software.id]">{{software.name}}</a>
+                  </div>
+              </td>
+              <td class="center-all">{{software.version || 'NA'}}</td>
+              <!-- <td class="center-all">{{software.purchasedCount}}</td>
+              <td class="center-all">{{software.installedCount}}</td>
+              <td class="center-all">{{software.availableCount}}</td> -->
+              <td class="center-all">{{software.complianceType || 'NA'}}</td>
+              <td class="center-all">{{software.softwareCategory.name || 'NA'}}</td>
+              <td class="center-all">{{software.manufacturer.name || 'NA'}}</td>
+              <td class="center-all">{{software.softwareType.name || 'NA'}}</td>
+          </tr>
+        <br>
+      </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="table-part" *ngIf="licenseToSoftwareMappings.length == 0 && !dataLoader">
+    <div>
+      <h6 class="center-all" style="padding: 10px">No Data Availble.</h6>
+    </div>
+  </div>
+  <div class="row ml-0 mr-0 mb-3 mt-2">
+      <span class="row text-color-label ml-0" style="font-size: 16px">License Calculation</span>
+      <div class="box">
+          <div class="table-part max-height" *ngIf="!dataLoader && licenseCalculationData.length > 0">
+              <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <th class="center-all">Asset Name</th>
+                        <th class="center-all">Serial Number</th>
+                        <th class="center-all">IP Address</th>
+                        <th class="center-all">License Usage</th>
+                        <th class="center-all">License Metric</th>
+                        <th class="center-all">License Assignment</th>
+                    </thead>
+                    <tbody style="font-weight:600;" *ngFor="let license of licenseCalculationData">
+                        <tr class="bl-blue table-card">
+                            <td class="center-all pointer">{{license.assetName}}</td>
+                            <td class="center-all pointer">{{license.serialNumber || 'NA'}}</td>
+                            <td class="center-all pointer">{{license.ipAddress || 'NA'}}</td>
+                            <td class="center-all">{{license.licenseUsage}}</td>
+                            <td class="center-all">{{license.licenseMetric || 'NA'}}</td>
+                            <td class="center-all">{{license.licenseAssignment || 'NA'}}</td>
+                        </tr>
+                        <br>
+                    </tbody>
+                </table>
+              </div>
+            </div>
+        <div class="table-part" *ngIf="licenseCalculationData.length == 0 && !dataLoader">
+            <div>
+              <h6 class="center-all" style="padding: 10px">No Data Availble.</h6>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>

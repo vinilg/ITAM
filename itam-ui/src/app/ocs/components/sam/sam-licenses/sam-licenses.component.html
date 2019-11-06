@@ -1,0 +1,136 @@
+<div class="m-l-10">
+    <div class="col-md-12 p-all-0">
+        <div class="col-md-6 pull-left p-all-0 m-b-5">
+            <h4 class="text-color-label">Software Licenses</h4>
+        </div>
+        <button class="btn btn-primary bg-set pull-right ml-2 text-uppercase" [routerLink]="['/ocs/sam/config']">Configuration</button>
+        <button class="btn btn-primary bg-set-secondary pull-right text-uppercase" [routerLink]="['/ocs/sam/licenses/add']">ADD</button>
+    </div>
+    <div class="box">
+        <div class="lineUnder m-t-10">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 bg-lightGray pb-4" [hidden]="!showSearchbox">
+                <div class="col-md-12 big-text">Advanced Search</div>
+                <div class="formsFields">
+                    <form #searchForm="ngForm">
+                        <div class="row col-md-12">
+                            <div class="col-md-4 m-t-5">
+                                <label>License Capacity Type : </label>
+                                <select class="form-control selectTopMargin" name="type" id="type" [(ngModel)]="licenseFilterObj.selectedCapacityType">
+                                    <option value="">Select</option>
+                                    <option value="{{capacityType.id}}" *ngFor = "let capacityType of licenseFilterMasterData.capacityTypes">{{capacityType.name}}</option>
+                                </select>
+                                <div class="errorMsg" [hidden]="!noFilterSelect" id="error">Select atleast one filter</div>
+                            </div>
+                            <div class="col-md-4 m-t-5">
+                                <label>Vendors: </label>
+                                <select class="form-control selectTopMargin" name="vendor" id="vendor" [(ngModel)]="licenseFilterObj.selectedVendor">
+                                    <option value="">Select</option>
+                                    <option value="{{vendor.id}}" *ngFor = "let vendor of licenseFilterMasterData.vendors">{{vendor.name}}</option>
+                                </select>
+                            </div>
+                                <div class="col-md-2 m-t-5">
+                                    <label>Status: </label>
+                                    <select class="form-control selectTopMargin" name="status" id="status" [(ngModel)]="licenseFilterObj.selectedStatus">
+                                        <option value=1>Active</option>
+                                        <option value=0>Inactive</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 m-t-5">
+                                    <label>OEM: </label>
+                                    <select class="form-control selectTopMargin" name="oem" id="oem" [(ngModel)]="licenseFilterObj.selectedOem">
+                                        <option value="">Select</option>
+                                        <option value="{{oem.id}}" *ngFor = "let oem of licenseFilterMasterData.oemMasters">{{oem.name}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 m-t-5">
+                                    <label>Creation Type: </label>
+                                    <select class="form-control selectTopMargin" name="creationType" id="creationType" [(ngModel)]="licenseFilterObj.selectedCreationType">
+                                        <option value=1>All</option>
+                                        <option value="Basic License">Basic License</option>
+                                        <option value="Multiple PO License">Multiple PO License</option>
+                                        <option value="Maintenance License">Maintenance License</option>
+                                        
+                                    </select>
+                                </div>
+                            <div class="col-md-3 offset-md-1">
+                                  <input type="submit" class="btn btn-primary bg-set text-uppercase m-t-25 m-l-10 pull-right" value="Search" (click)="searchLicenses(searchForm)">
+                                  <input type="button" class="btn btn-primary bg-set-secondary text-uppercase m-t-25 pull-right" value="Clear" (click)="clearFilters()">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <a class="openClose pointer" [hidden]="showSearchbox" (click)="showhideSearch()">
+            <i class="fa fa-search advanced-search-icon"></i>
+        </a>
+        <a class="openClose pointer" [hidden]="!showSearchbox" (click)="showhideSearch()">
+            <i class="fa fa-chevron-up advanced-search-icon"></i>
+        </a>
+
+        <div class="row">
+            <label class="col-md-6 m-t-25">
+                <b>Total Records: </b>{{softwareLicenseSummaryData.pagination?.totalElements}}</label>
+            <div class="col-md-6">
+                    <mat-progress-spinner class="mat-spinner" color="primary" [diameter]="20"  strokeWidth="3" mode="indeterminate" *ngIf="isDowloading"></mat-progress-spinner>
+                    <span style="color: #2a3f54" class="downloading-label" *ngIf = "isDowloading">Downloading.....</span>
+                    <input type="button" class="btn btn-primary bg-set text-uppercase m-l-10 m-b-15 m-t-10 pull-right" value="Export" [disabled]="isDowloading || dataLoader || softwareLicenseSummaryData.licenses?.length == 0" (click)="downloadExcel()">
+            </div>
+        </div>
+        <table-header [pageInfo]="softwareLicenseSummaryData.pagination" (onChange)="onChangeFilter($event)"
+        [search]="true" [noOfRecord]="true" [sort]="false"></table-header>
+        <div *ngIf="dataLoader">
+            <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+        </div>
+        <div class="table-part" *ngIf="!dataLoader && softwareLicenseSummaryData.licenses?.length > 0">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <th class="center-all">License</th>
+                        <th class="center-all">Purchased</th>
+                        <th class="center-all">Available</th>
+                        <th class="center-all">Active License</th>
+                        <th class="center-all">Creation Type</th>
+                        <th class="center-all">Vendor</th>
+                        <th class="center-all">OEM</th>
+                        <th class="center-all">Capacity Type</th>
+                        <th class="center-all">License Type</th>
+                        <th class="center-all">PO Number</th>
+                        <!-- <th class="center-all">Purchase Cost</th> -->
+                        <th class="center-all">PO Start Date</th>
+                        <th class="center-all">PO End Date</th>
+                        <th class="center-all">Responsible User</th>
+                    </thead>
+                    <tbody style="font-weight:600;" *ngFor="let license of softwareLicenseSummaryData.licenses">
+                        <tr class="bl-blue table-card">
+                            <td class="center-all pointer">
+                                <a [routerLink]="['/ocs/sam/license-details/',license.id]">{{license.name}}</a>
+                            </td>
+                            <td class="center-all pointer">{{license.licenseCount}}</td>
+                            <td class="center-all pointer">{{license.availableCount}}</td>
+                            <td class="center-all pointer">{{license.activeLicenseCount}}</td>
+                            <td class="center-all">{{license.creationType || 'NA'}}</td>
+                            <td class="center-all">{{license.vendor.name || 'NA'}}</td>
+                            <td class="center-all">{{license.oem.name || 'NA'}}</td>
+                            <td class="center-all">{{license.capacityTypeDto.name || 'NA'}}</td>
+                            <td class="center-all">{{license.licenseType || 'NA'}}</td>
+                            <td class="center-all">{{license.poNumber || 'NA'}}</td>
+                            <!-- <td class="center-all">{{license.purchaseCost || 'NA'}}</td> -->
+                            <td class="center-all">{{license.licenseStartDate || 'NA'}}</td>
+                            <td class="center-all">{{license.licenseEndDate || 'NA'}}</td>
+                            <td class="center-all">{{license.responsiblePerson || 'NA'}}</td>
+                        </tr>
+                        <br>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="table-part" *ngIf = "softwareLicenseSummaryData.licenses?.length == 0">
+          <div>
+              <h6 class = "center-all" style="padding: 10px">No Data Availble.</h6>
+            </div>
+        </div>
+    </div>
+</div>

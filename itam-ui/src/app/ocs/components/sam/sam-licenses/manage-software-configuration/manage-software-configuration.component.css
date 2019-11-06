@@ -1,0 +1,39 @@
+.middle{
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+  color: #73879C !important;
+  margin-top: 12%;
+  font-family: "Gotham-Medium";
+  margin-bottom: 22%;
+}
+
+:host ::ng-deep .ngx-dropdown-container .ngx-dropdown-button{
+  padding: 10px !important;
+  border-radius: 0px !important;
+  min-height: 45px !important;
+}
+
+.wrapper{
+  display: inline-block;
+  margin-left: 40%;
+}
+
+.search-field{
+  padding: 10px;
+  width: 92%;
+}
+
+.search-button{
+  background-color: #2274a5;
+  border-radius: 0px !important;
+}
+
+.search-icon{
+  color: #fff !important;
+  font-size: 20px;
+}
+
+.message-color{
+  color: #6f6f6f;
+}

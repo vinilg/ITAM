@@ -1,0 +1,195 @@
+<div class="box">
+  <div *ngIf="dataLoader">
+    <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+  </div>
+  <form #editAssetForm="ngForm" (submit)="onSubmit(editAssetFieldObj)" *ngIf="!dataLoader">
+    <div class="box mb-4" style="background-color: #ffffff !important">
+      <div class="row col-md-12" *ngFor="let asset of assetDetails?.attributes | keyvalue">
+        <ng-container *ngFor="let assetValue of asset.value; let i=index">
+          <div class="col-md-6" *ngIf="asset.key != 'Processor Details'">
+            <div class="form-group row" *ngIf="assetValue.attributesType == 'Text'">
+              <label class="col-sm-5 col-form-label text-right">{{assetValue.attributeDetails?.attributeName}}</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" name="editAssetField{{assetValue.attributeDetails?.attrbuteId}}" [(ngModel)]="editAssetFieldObj[assetValue.attributeDetails?.attrbuteId]">
+              </div>
+            </div>
+            <div class="form-group row" *ngIf="assetValue.attributesType == 'Select'">
+              <label class="col-sm-5 col-form-label text-right">{{assetValue.attributeDetails?.attributeName}}</label>
+              <div class="col-sm-7">
+                <mat-form-field>
+                  <mat-select [(value)]="editAssetFieldObj[assetValue.attributeDetails?.attrbuteId]">
+                    <mat-option *ngFor="let option of assetValue.attributeTypeValues" [value]="option">
+                      {{option}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="form-group row" *ngIf="assetValue.attributesType == 'Date'">
+              <label class="col-sm-5 col-form-label text-right">{{assetValue.attributeDetails?.attributeName}}</label>
+              <div class="col-sm-7">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker" [(value)]="editAssetFieldObj[assetValue.attributeDetails?.attrbuteId]">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="form-group row" *ngIf="assetValue.attributesType == 'Typeahead'">
+              <label class="col-sm-5 col-form-label text-right">{{assetValue.attributeDetails?.attributeName}}</label>
+              <div class="col-sm-7">
+                  <input [(ngModel)]="ownerName"
+                  autocomplete="off"
+                  name="owner"
+                  typeaheadMinLength = 3
+                  [typeaheadAsync]="true"
+                  [typeahead]="ownerDataSource"
+                  [typeaheadItemTemplate]="customItemTemplate"
+                  (typeaheadOnSelect)="onSelectOwnerName($event,assetValue.attributeDetails?.attrbuteId)"
+                  [typeaheadOptionsLimit]="20"
+                  placeholder="Search....."
+                  class="form-control">
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <h5 class="text-color-label">Asset State</h5>
+    <div class="box mb-4">
+      <div class="row col-md-12">
+        <ng-container>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-md-5 col-form-label text-right">Asset Status In</label>
+              <div class="col-md-7">
+                <mat-form-field>
+                  <mat-select name="assetStatus" [(ngModel)]="assetBasicDetails.selectedStatus" #assetStatus="ngModel" required>
+                    <mat-option [value]="status.id" *ngFor="let status of filterMasterData?.allAvailableStatus">{{status.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6" *ngIf="showContractDetails">
+            <div class="form-group row">
+              <label class="col-md-5 col-form-label text-right">Commissioned Date</label>
+              <div class="col-md-7">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker2" name="commissioned" [(ngModel)]="assetBasicDetails.commissionedDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6" *ngIf="showContractDetails">
+            <div class="form-group row">
+              <label class="col-md-5 col-form-label text-right">De-Commissioned Date</label>
+              <div class="col-md-7">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker3" name="deCommissioned" [(ngModel)]="assetBasicDetails.deCommissionedDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                  <mat-datepicker #picker3></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6" *ngIf="showContractDetails">
+            <div class="form-group row">
+              <label class="col-md-5 col-form-label text-right">Support Start Date</label>
+              <div class="col-md-7">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker4" name="supportStart" [(ngModel)]="assetBasicDetails.supportStartDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                  <mat-datepicker #picker4></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6" *ngIf="showContractDetails">
+            <div class="form-group row">
+              <label class="col-md-5 col-form-label text-right">Support End Date</label>
+              <div class="col-md-7">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker5" name="supportEnd" [(ngModel)]="assetBasicDetails.supportEndDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
+                  <mat-datepicker #picker5></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6" *ngIf="showContractDetails">
+            <div class="form-group row">
+              <label class="col-md-5 col-form-label text-right">Purchase Date</label>
+              <div class="col-md-7">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker6" name="purchase" [(ngModel)]="assetBasicDetails.purchaseDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker6"></mat-datepicker-toggle>
+                  <mat-datepicker #picker6></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-md-5 col-form-label text-right">Location</label>
+              <div class="col-md-7">
+                  <mat-form-field>
+                <mat-select name="assetLocation" [(ngModel)]="assetBasicDetails.selectedLocation" (selectionChange)="onChangeLocation(assetBasicDetails.selectedLocation)"
+                  #assetLocation="ngModel" required>
+                  <mat-option [value]="location.id" *ngFor="let location of filterMasterData?.allLocations">{{location.name}}</mat-option>
+                </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-md-5 col-form-label text-right">Site</label>
+              <div class="col-md-7">
+                <mat-form-field>
+                  <mat-select name="assetSite" [(ngModel)]="assetBasicDetails.selectedSite" (selectionChange)="onChangeSite(assetBasicDetails.selectedSite)" #assetSite="ngModel" required>
+                    <mat-option [value]="site.id" *ngFor="let site of assetSiteMaster">{{site.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div *ngIf="processorDetails.length > 0">
+      <h5 class="text-color-label">Processor Details</h5>
+      <div class="table-part">
+        <div class="col-md-12">
+          <table class="table">
+            <thead>
+              <th *ngFor="let processor of processorDetails">{{processor.attributeDetails?.attributeName}}</th>
+            </thead>
+            <tbody style="font-weight:600;">
+              <tr class="bl-blue table-card m-b-15">
+                <td *ngFor="let processor of processorDetails;let i=index" class="center-all">
+                  <input type="text" class="form-control" name="editAssetField{{processor.attributeDetails?.attrbuteId}}" [(ngModel)]="editAssetFieldObj[processor.attributeDetails?.attrbuteId]">
+                </td>
+              </tr>
+              <br>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="mt-3">
+      <button type="submit" class="btn btn-danger text-uppercase bg-set-secondary pull-right ml-3" (click)="onClickCancel()">Cancel</button>
+      <button type="submit" class="btn btn-primary bg-set pull-right text-uppercase">Submit</button>
+    </div>
+  </form>
+</div>
+<ng-template #customItemTemplate let-model="item" let-index="index">
+    <span>{{model.userId}} ({{model.firstName +" "+model.lastName}})</span>
+  </ng-template>

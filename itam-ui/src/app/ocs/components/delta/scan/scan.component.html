@@ -1,0 +1,37 @@
+<div class="box m-t-25 col-md-12">
+  <form #scanForm = "ngForm" (ngSubmit) = "scanNow(scanObj)">
+    <div class="form-group row col-md-6 scan">
+      <label for="source" class="col-sm-2 col-form-label text-color-label" style="font-size: 15px">Source</label>
+      <div class="col-sm-10">
+        <select class="custom-select mr-sm-2" id="source" name="source" [(ngModel)]="scanObj.selectedSource">
+          <option value="select">Choose...</option>
+          <option *ngFor = "let source of sources" [value]="source.id">{{source.sourceName}}</option>
+        </select>
+      </div>
+    </div>
+    <div *ngIf="scanObj.selectedSource == 3839 || scanObj.selectedSource == 4">
+    <div class="form-group row col-md-6 scan">
+        <label for="ci" class="col-sm-2 col-form-label">CI Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id = "ci" name = "ci" [(ngModel)]= "scanObj.ciName" [disabled] = "scanObj.ipRange != ''">
+        </div>
+      </div>
+      <div class="row col-md-6 scan" style="text-align: center;display: block;">
+        OR
+      </div>
+      <div class="form-group row col-md-6 scan">
+        <label for="ipRange" class="col-sm-2 col-form-label">Ip Range</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id = "ipRange" name = "ipRange" [(ngModel)]= "scanObj.ipRange" placeholder="Ex.192.168.23.140-192.168.23.150" [disabled] = "scanObj.ciName != ''">
+        </div>
+      </div>
+
+      <div class="row col-md-6 scan" style="text-align: center;display: block;color: red" *ngIf = "selectAtLeastOne">
+          Please Fill At Least One Filed..
+        </div>
+    </div>
+    <div class="btn-center">
+      <button type = "submit" class="btn btn-primary bg-set">Scan</button>
+    </div>
+  </form>
+</div>

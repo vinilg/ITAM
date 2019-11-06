@@ -1,0 +1,125 @@
+<div *ngIf="dataLoader">
+    <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+  </div>
+<div class="m-l-10" style="background-color: #f6f6f6" *ngIf="!dataLoader">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card bg-c-light-orange pointer" (click) = "onSoftwareTileClick('All')">
+        <div class="card-block">
+          <div class="row align-items-end">
+            <div class="col-8">
+              <span class="text-white count-font-size">{{baseSoftwareData?.totalLicenses}}</span>
+            </div>
+            <div class="col-4">
+              <i class="fa fa-drivers-license-o label-icon" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <p class="text-white m-b-0">
+            <i class="fa fa-drivers-license-o f-14 m-r-10 text-white"></i>All Licenses</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card bg-c-green update-card pointer" (click) = "onSoftwareTileClick('unUsedLicenses')">
+        <div class="card-block">
+          <div class="row align-items-end">
+            <div class="col-8">
+              <span class="text-white count-font-size">{{baseSoftwareData?.unUsedLicense}}</span>
+            </div>
+            <div class="col-4">
+              <i class="fa fa-certificate label-icon" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <p class="text-white m-b-0">
+            <i class="fa fa-certificate text-white f-14 m-r-10"></i>Unused Licenses</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card bg-c-yellow pointer" (click) = "onSoftwareTileClick('licenseExpiringInNextThirtyDays')">
+        <div class="card-block">
+          <div class="row align-items-end">
+            <div class="col-8">
+              <span class="text-white count-font-size">{{baseSoftwareData?.licenseExpiredNextInThirtyDays}}</span>
+            </div>
+            <div class="col-4">
+              <i class="fa fa-barcode label-icon" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <p class="text-white m-b-0" style="color: #fff!important;">
+            <i class="fa fa-barcode text-white f-14 m-r-10"></i>Licenses Expiring In Next 30 Days</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card bg-c-light-blue pointer" (click) = "onSoftwareTileClick('expired')">
+        <div class="card-block">
+          <div class="row align-items-end">
+            <div class="col-8">
+              <span class="text-white count-font-size">{{baseSoftwareData?.expiredLicesnes}}</span>
+            </div>
+            <div class="col-4">
+              <i class="fa fa-trash-o label-icon" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <p class="text-white m-b-0">
+            <i class="fa fa-trash-o text-white f-14 m-r-10"></i>Expired Licenses</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row m-t-15 mb-5">
+    <div class="col-md-4 p-r-0">
+      <div class="x_panel">
+        <div class="card-header px-0 py-2">
+          Software By Category
+        </div>
+        <div class="card-body p-0 m-t-15">
+          <highcharts-chart [Highcharts]="Highcharts" [options]="softwareCategoryOption"></highcharts-chart>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 p-r-0">
+      <div class="x_panel">
+        <div class="card-header px-0 py-2">
+          Software By Compliace Status
+        </div>
+        <div class="card-body p-0 m-t-15">
+          <highcharts-chart [Highcharts]="Highcharts" [options]="softwareComplianceOption"></highcharts-chart>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="x_panel">
+        <div class="card-header px-0 py-2">
+          Software By Type
+        </div>
+        <div class="card-body p-0 m-t-15">
+          <highcharts-chart [Highcharts]="Highcharts" [options]="softwareTypeOption"></highcharts-chart>
+        </div>
+      </div>
+    </div>
+    <div class="container m-t-15" style="background-color: #ffffff">
+        <div class="row col-md- 12 card-header px-0 pb-0">
+          <div class="col-md-6">
+            License By OEM
+          </div>
+        </div>
+        <div class="card-body p-0 m-t-15">
+          <highcharts-chart [Highcharts]="Highcharts" [options]="licenseOemChartOption"></highcharts-chart>
+        </div>
+      </div>
+  </div>
+
+</div>

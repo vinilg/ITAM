@@ -1,0 +1,112 @@
+{
+    "data" : {
+        "ciTypeList" : [
+            {
+                "name": "Applications",
+                "description": "Some description about this application comes here",
+                "childCiTypeList": [
+                    {
+                        "name": "calendar",
+                        "description": "Some description about this application comes hereSome description about this application comes hereSome description about this application comes hereSome description about this application comes here"
+                    },
+                    {
+                        "name": "calendar",
+                        "description": "Some description about this application comes here"
+                    },
+                    {
+                        "name": "calendar",
+                        "description": "Some description about this application comes here"
+                    },
+                    {
+                        "name": "calendar",
+                        "description": "Some description about this application comes here"
+                    }
+                ]
+            },
+            {
+                "name": "Applications",
+                "description": "Some description about this application comes here",
+                "childCiTypeList": [
+                    {
+                        "name": "calendar",
+                        "description": "Some description about this application comes here"
+                    },
+                    {
+                        "name": "calendar",
+                        "description": "Some description about this application comes here"
+                    }
+                ]
+            },
+            {
+                "name": "Applications",
+                "description": "Some description about this application comes here",
+                "childCiTypeList": [
+                    {
+                        "name": "calendar",
+                        "description": "Some description about this application comes here"
+                    }
+                ]
+            },
+            {
+                "name": "Applications",
+                "description": "Some description about this application comes here",
+                "childCiTypeList": [
+                    {
+                        "name": "calendar",
+                        "description": "Some description about this application comes here"
+                    },
+                    {
+                        "name": "calendar",
+                        "description": "Some description about this application comes here"
+                    }
+                ]
+            },
+            {
+                "name": "Applications",
+                "description": "Some description about this application comes here",
+                "childCiTypeList": [
+                    {
+                        "name": "calendar",
+                        "description": "Some description about this application comes here"
+                    },
+                    {
+                        "name": "calendar",
+                        "description": "Some description about this application comes here"
+                    },
+                    {
+                        "name": "calendar",
+                        "description": "Some description about this application comes here"
+                    },
+                    {
+                        "name": "calendar",
+                        "description": "Some description about this application comes here"
+                    },
+                    {
+                        "name": "calendar",
+                        "description": "Some description about this application comes here"
+                    },
+                    {
+                        "name": "calendar",
+                        "description": "Some description about this application comes here"
+                    },
+                    {
+                        "name": "calendar",
+                        "description": "Some description about this application comes here"
+                    },
+                    {
+                        "name": "calendar",
+                        "description": "Some description about this application comes here"
+                    },
+                    {
+                        "name": "calendar",
+                        "description": "Some description about this application comes here"
+                    },
+                    {
+                        "name": "calendar",
+                        "description": "Some description about this application comes here"
+                    }
+                ]
+            }
+        ]
+    }
+}

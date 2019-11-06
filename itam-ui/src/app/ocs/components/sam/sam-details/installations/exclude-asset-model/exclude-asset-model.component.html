@@ -1,0 +1,43 @@
+<div class="card">
+  <h6 class="card-header card-header-color">
+    <span class="card-header-label">Exclude Selected Assets</span>
+  </h6>
+  <div class="card-body">
+    <form #f="ngForm" (ngSubmit)="f.form.valid && onExcludeAsset(excludeAssetModelObj)" novalidate>
+      <div class="row m-t-10">
+        <label class="col-md-2 offset-md-1 mandate">License</label>
+        <mat-form-field class="col-md-8">
+          <mat-select name="license" [(ngModel)]="excludeAssetModelObj.selectedLicense" #license="ngModel" required>
+            <mat-option *ngFor="let option of excludeAssetModelObj?.licenses" [value]="option.id">
+              {{option.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="license.errors?.required && (license.touched || f.submitted)">
+              please select atleast one license</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row m-t-15">
+        <label class="col-md-2 offset-md-1 mandate">Reason</label>
+        <mat-form-field class="col-md-8">
+          <mat-select name="reason" [(ngModel)]="excludeAssetModelObj.selectedReason" #reason="ngModel" required>
+            <mat-option *ngFor="let reason of excludeAssetModelObj?.reasonMaster" [value]="reason.id">
+              {{reason.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="reason.errors?.required && (reason.touched || f.submitted)">
+              please select atleast one reason</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row m-t-15">
+          <label class="col-md-2 offset-md-1">Comments</label>
+          <mat-form-field class="col-md-8">
+                <textarea matInput name="comments" [(ngModel)]="excludeAssetModelObj.comments"></textarea>
+          </mat-form-field>
+        </div>
+      <div class="mt-3">
+          <button type="button" class="btn btn-primary bg-set pull-right ml-3" (click)="onCancelModel()">CANCEL</button>
+          <button type="submit" class="btn btn-primary bg-set pull-right">EXCLUDE</button>
+        </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="m-l-10">
+  <div class="col-md-12 p-all-0">
+    <div class="col-md-6 pull-left p-all-0 m-b-5">
+      <h4 class="text-color-label">Temp Asset - {{basicAssetDetails.assetName}} - {{basicAssetDetails.source}}</h4>
+    </div>
+  </div>
+  <div class="box">
+      <div class="row">
+          <div class = "col-md-7" style="padding-left: 40px">
+              <label class="row col-md-12 fs-18 m-l-40">{{basicAssetDetails.assetName}} [{{ipAddress}}]</label>
+              <label class="row col-md-12 m-t-10 m-l-40" *ngIf = "basicAssetDetails.connectedUser != null">Connected To : {{basicAssetDetails.connectedUser}}</label>
+              <label class="row col-md-12 m-t-10 m-l-40" *ngIf = "basicAssetDetails.connectedUser == null">Connected To : Not Available</label>
+          </div>
+            <div class="col-md-3 offset-2" style="max-width:22.5%;padding:0px;background-color: #f6f6f6;
+            box-shadow: 1px 3px 5px grey;">
+              <div class="m-t-10 m-l-10">
+              <div class="row"><span class="col-md-6">Scan Status</span><span class="col-md-6 form-field-color">Success</span></div>
+              <div class="row m-t-10 mb-1"><span class="col-md-6">Asset State</span><span class="col-md-6 form-field-color">Active</span></div>
+            </div>
+          </div>
+          </div>
+    <div class="m-b-10" style = "margin-top: -16px">
+      <mat-tab-group class="col-md-12 col-sm-12 p-all-0 m-t-15" (selectedTabChange) = "loadTabComponent($event)">
+        <mat-tab label="Administrative/Hardware Data">
+          <app-temp-administrative-hardware-data  (ipInfo)="getIpInfo($event)"></app-temp-administrative-hardware-data>
+        </mat-tab>
+        <mat-tab label="Software">
+          <app-temp-ocs-software *ngIf = "isSoftware"></app-temp-ocs-software>
+        </mat-tab>
+        <!-- <mat-tab label="Relationship">
+          <temp-app-relationship *ngIf = "isRelationship"></temp-app-relationship>
+        </mat-tab> -->
+      </mat-tab-group>
+    </div>
+  </div>

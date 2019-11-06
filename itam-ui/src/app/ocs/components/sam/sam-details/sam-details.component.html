@@ -1,0 +1,38 @@
+<div class="m-l-10">
+    <div class="col-md-12 p-all-0">
+      <div class="col-md-6 pull-left p-all-0 m-b-5">
+        <h4 class="text-color-label">Software - {{baseHeaderDetails.softwareName}}</h4>
+      </div>
+        <!-- <button class="btn btn-primary bg-set pull-right" *ngIf="!isEdit" (click)="onClickSoftwareEdit()" [disabled] = "true">EDIT</button> -->
+    </div>
+    <div class="box" *ngIf="!isEdit">
+        <div class="row">
+            <div class = "col-md-7" style="padding-left: 40px">
+                <label class="row col-md-12 fs-18 m-l-40">{{baseHeaderDetails.softwareName}}</label>
+                <label class="row col-md-12 m-t-10 m-l-40" >Publisher : {{baseHeaderDetails.manufacturer}}</label>
+            </div>
+              <div class="box col-md-3 offset-2" style="max-width:22.5%;padding:0px;background-color: #f6f6f6;
+              box-shadow: 1px 3px 5px grey;">
+                <div class="m-t-10 m-l-10">
+                <div class="row"><span class="col-md-6">Category</span><span class="col-md-6 form-field-color">{{baseHeaderDetails.category}}</span></div>
+                <div class="row m-t-10 mb-1"><span class="col-md-6">Type</span><span class="col-md-6 form-field-color">{{baseHeaderDetails.type}}</span></div>
+              </div>
+            </div>
+            </div>
+      <div class="m-b-10" style = "margin-top: -16px">
+        <mat-tab-group class="col-md-12 col-sm-12 p-all-0 m-t-15" (selectedTabChange) = "loadTabComponent($event)">
+          <mat-tab label="Software Details">
+            <app-details *ngIf="flag.softwareInfo" (baseHeaderInfo)="getBaseHeaderInfo($event)"></app-details>
+          </mat-tab>
+          <mat-tab label="License">
+            <app-licenses *ngIf="flag.licenseTab"></app-licenses>
+          </mat-tab>
+          <mat-tab label="Installations">
+            <app-installations *ngIf="flag.installationTab"></app-installations>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+    <div *ngIf="isEdit">
+        <app-edit-software></app-edit-software>
+      </div>

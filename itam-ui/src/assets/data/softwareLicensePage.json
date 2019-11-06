@@ -1,0 +1,48 @@
+{
+    "allSoftwareLicenseSummary": [
+        {
+            "softwareDetail": {
+                "id": 1,
+                "name": "Microsoft Office 365 ProPlus - en-us"
+            },
+            "basicLicenseDetails": {
+                "id": 1,
+                "name": "Microsoft Office 2019"
+            },
+            "licenseCounts": {
+                "purchasedCount": 5,
+                "allocatedCount": 0,
+                "availableCount": 0
+            },
+            "licenseType": {
+                "id": 1,
+                "name": "Individual"
+            },
+            "licenseKey": "sgdgdgfxyssw564753sgx",
+            "expiresIn": "27 days",
+            "expiryDate": "2019/06/13"
+        },
+        {
+            "softwareDetail": {
+                    "id": 2,
+                    "name": "Cisco AnyConnect Secure Mobility Client"
+                },
+            "basicLicenseDetails": {
+                "id": 2,
+                "name": "Cisco AnyConnect Lic."
+            },
+            "licenseCounts": {
+                "purchasedCount": 5,
+                "allocatedCount": 0,
+                "availableCount": 0
+            },
+            "licenseType": {
+                "id": 1,
+                "name": "Individual"
+            },
+            "licenseKey": "seteeff2345",
+            "expiresIn": "27 days",
+            "expiryDate": "2019/06/13"
+        }
+    ]
+}

@@ -1,0 +1,192 @@
+<div *ngIf="dataLoader" class="m-t-25">
+  <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+</div>
+<div class="m-t-10 pl-0 pr-0 ml-0 mr-0 card-height">
+    <div class="col-md-12 mb-3" *ngIf="!dataLoader">
+        <div class="row">
+    <li class="col-md-6 list-group-item form-list">
+      <div class="row">
+        <span class="col-md-4 bg-gray form-label">License Name</span>
+        <span class="col-md-8 form-field form-field-color">{{selectedLicenseDetails.name}}</span>
+      </div>
+    </li>
+    <li class="col-md-6 list-group-item form-list">
+        <div class="row">
+          <span class="col-md-4 bg-gray form-label">Creation Type</span>
+          <span class="col-md-8 form-field form-field-color">{{selectedLicenseDetails.creationType}}</span>
+        </div>
+      </li>
+    <li class="col-md-6 list-group-item form-list">
+      <div class="row">
+        <span class="col-md-4 bg-gray form-label">Vendor</span>
+        <span class="col-md-8 form-field form-field-color">{{selectedLicenseDetails.vendor.name}}</span>
+      </div>
+    </li>
+    <li class="col-md-6 list-group-item form-list">
+        <div class="row">
+          <span class="col-md-4 bg-gray form-label">Capacity Type</span>
+          <span class="col-md-8 form-field form-field-color">{{selectedLicenseDetails.capacityTypeDto.name}}</span>
+        </div>
+      </li>
+      <li class="col-md-6 list-group-item form-list">
+          <div class="row">
+            <span class="col-md-4 bg-gray form-label">OEM</span>
+            <span class="col-md-8 form-field form-field-color">{{selectedLicenseDetails.oem.name}}</span>
+          </div>
+        </li>
+    <li class="col-md-6 list-group-item form-list">
+      <div class="row">
+        <span class="col-md-4 bg-gray form-label">License Type</span>
+        <span class="col-md-8 form-field form-field-color">{{selectedLicenseDetails.licenseType || 'NA'}}</span>
+      </div>
+    </li>
+    <li class="col-md-6 list-group-item form-list">
+      <div class="row">
+        <span class="col-md-4 bg-gray form-label">PO Number</span>
+        <span class="col-md-8 form-field form-field-color">{{selectedLicenseDetails.poNumber}}</span>
+      </div>
+    </li>
+    <li class="col-md-6 list-group-item form-list">
+        <div class="row">
+          <span class="col-md-4 bg-gray form-label">Purchase Cost</span>
+          <span class="col-md-8 form-field form-field-color">{{selectedLicenseDetails.purchaseCost || 'NA'}}</span>
+        </div>
+      </li>
+    <li class="col-md-6 list-group-item form-list">
+      <div class="row">
+        <span class="col-md-4 bg-gray form-label">PO Start Date</span>
+        <span class="col-md-8 form-field form-field-color">{{selectedLicenseDetails.licenseStartDate}}</span>
+      </div>
+    </li>
+    <li class="col-md-6 list-group-item form-list">
+        <div class="row">
+          <span class="col-md-4 bg-gray form-label">PO End Date</span>
+          <span class="col-md-8 form-field form-field-color">{{selectedLicenseDetails.licenseEndDate}}</span>
+        </div>
+      </li>
+        <li class="col-md-6 list-group-item form-list">
+            <div class="row">
+              <span class="col-md-4 bg-gray form-label">Responsible Person</span>
+              <span class="col-md-8 form-field form-field-color">{{selectedLicenseDetails.responsiblePerson || 'NA'}}</span>
+            </div>
+          </li>
+          <li class="col-md-6 list-group-item form-list">
+              <div class="row">
+                <span class="col-md-4 bg-gray form-label">Part Number</span>
+                <span class="col-md-8 form-field form-field-color">{{selectedLicenseDetails.partNumber || 'NA'}}</span>
+              </div>
+            </li>
+  </div>
+  </div>
+
+  <div class="row ml-0 mr-0 mb-3">
+      <span class="row text-color-label ml-0" style="font-size: 16px">Multiple PO License</span>
+      <div class="box">
+        <div class="table-part" *ngIf="!dataLoader && childMultipleLicenseDetails.length > 0">
+          <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <th class="center-all">License</th>
+                    <th class="center-all">Purchased</th>
+                    <th class="center-all">Available</th>
+                    <th class="center-all">Active License</th>
+                    <th class="center-all">Creation Type</th>
+                    <th class="center-all">Vendor</th>
+                    <th class="center-all">OEM</th>
+                    <th class="center-all">Capacity Type</th>
+                    <th class="center-all">License Type</th>
+                    <th class="center-all">PO Number</th>
+                    <th class="center-all">Purchase Cost</th>
+                    <th class="center-all">PO Start Date</th>
+                    <th class="center-all">PO End Date</th>
+                    <th class="center-all">Responsible User</th>
+                    <th class="center-all">Action</th>
+                </thead>
+                <tbody style="font-weight:600;" *ngFor="let license of childMultipleLicenseDetails">
+                    <tr class="bl-blue table-card">
+                        <td class="center-all pointer">
+                            <a [routerLink]="['/ocs/sam/license-details/',license.id]">{{license.name}}</a>
+                        </td>
+                        <td class="center-all pointer">{{license.licenseCount}}</td>
+                        <td class="center-all pointer">{{license.availableCount}}</td>
+                        <td class="center-all pointer">{{license.activeLicenseCount}}</td>
+                        <td class="center-all">{{license.creationType || 'NA'}}</td>
+                        <td class="center-all">{{license.vendor.name || 'NA'}}</td>
+                        <td class="center-all">{{license.oem.name || 'NA'}}</td>
+                        <td class="center-all">{{license.capacityTypeDto.name || 'NA'}}</td>
+                        <td class="center-all">{{license.licenseType || 'NA'}}</td>
+                        <td class="center-all">{{license.poNumber || 'NA'}}</td>
+                        <td class="center-all">{{license.purchaseCost || 'NA'}}</td>
+                        <td class="center-all">{{license.licenseStartDate || 'NA'}}</td>
+                        <td class="center-all">{{license.licenseEndDate || 'NA'}}</td>
+                        <td class="center-all">{{license.responsiblePerson || 'NA'}}</td>
+                        <td class="center-all"><i class="fa fa-pencil-square-o fs-20 pointer" aria-hidden="true" [routerLink]="['/ocs/sam/licenses/edit/', license.id]"></i></td>
+                    </tr>
+                    <br>
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="table-part" *ngIf="childMultipleLicenseDetails.length == 0 && !dataLoader">
+            <div>
+              <h6 class="center-all" style="padding: 10px">No Data Availble.</h6>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="row ml-0 mr-0 mb-3">
+        <span class="row text-color-label ml-0" style="font-size: 16px">Maintenance PO License</span>
+        <div class="box">
+          <div class="table-part" *ngIf="!dataLoader && childMaintenanceLicenseDetails.length > 0">
+            <div class="col-md-12">
+              <table class="table">
+                  <thead>
+                      <th class="center-all">License</th>
+                      <th class="center-all">Purchased</th>
+                      <th class="center-all">Available</th>
+                      <th class="center-all">Active License</th>
+                      <th class="center-all">Creation Type</th>
+                      <th class="center-all">Vendor</th>
+                      <th class="center-all">OEM</th>
+                      <th class="center-all">Capacity Type</th>
+                      <th class="center-all">License Type</th>
+                      <th class="center-all">PO Number</th>
+                      <th class="center-all">Purchase Cost</th>
+                      <th class="center-all">PO Start Date</th>
+                      <th class="center-all">PO End Date</th>
+                      <th class="center-all">Responsible User</th>
+                      <th class="center-all">Action</th>
+                  </thead>
+                  <tbody style="font-weight:600;" *ngFor="let license of childMaintenanceLicenseDetails">
+                      <tr class="bl-blue table-card">
+                          <td class="center-all pointer">
+                              <a [routerLink]="['/ocs/sam/license-details/',license.id]">{{license.name}}</a>
+                          </td>
+                          <td class="center-all pointer">{{license.licenseCount}}</td>
+                          <td class="center-all pointer">{{license.availableCount}}</td>
+                          <td class="center-all pointer">{{license.activeLicenseCount}}</td>
+                          <td class="center-all">{{license.creationType || 'NA'}}</td>
+                          <td class="center-all">{{license.vendor.name || 'NA'}}</td>
+                          <td class="center-all">{{license.oem.name || 'NA'}}</td>
+                          <td class="center-all">{{license.capacityTypeDto.name || 'NA'}}</td>
+                          <td class="center-all">{{license.licenseType || 'NA'}}</td>
+                          <td class="center-all">{{license.poNumber || 'NA'}}</td>
+                          <td class="center-all">{{license.purchaseCost || 'NA'}}</td>
+                          <td class="center-all">{{license.licenseStartDate || 'NA'}}</td>
+                          <td class="center-all">{{license.licenseEndDate || 'NA'}}</td>
+                          <td class="center-all">{{license.responsiblePerson || 'NA'}}</td>
+                          <td class="center-all"><i class="fa fa-pencil-square-o fs-20 pointer" aria-hidden="true" [routerLink]="['/ocs/sam/licenses/edit/', license.id]"></i></td>
+                      </tr>
+                      <br>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="table-part" *ngIf="childMaintenanceLicenseDetails.length == 0 && !dataLoader">
+              <div>
+                <h6 class="center-all" style="padding: 10px">No Data Availble.</h6>
+              </div>
+            </div>
+        </div>
+      </div>
+</div>

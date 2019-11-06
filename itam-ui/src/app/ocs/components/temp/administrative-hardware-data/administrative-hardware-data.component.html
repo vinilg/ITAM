@@ -1,0 +1,128 @@
+<div *ngIf="dataLoader" class="m-t-25">
+    <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+  </div>
+  
+  <div class=" m-t-10 pl-0 pr-0 ml-0 mr-0 card-height">
+      <div class="col-md-12 mb-3" *ngFor="let asset of administrativeDetails">
+        <div *ngIf="asset.headerName != 'Processor Details'">
+            <span class="row text-color-label" style = "font-size: 18px">{{asset.headerName}}</span>
+        <div class="row">
+          <li class="col-md-6 list-group-item form-list" *ngFor="let assetDetail of asset.values | keyvalue">
+              <div class="row">
+              <span class="col-md-5 bg-gray form-label">{{assetDetail.key}}</span>
+              <span class="col-md-7 form-field form-field-color">{{assetDetail.value}}</span>
+            </div>
+            </li>
+            <div class="box" *ngIf = "(asset.values | json) == '{}'">No Data Available..</div>
+          </div>
+        </div>
+      </div>
+    <!-- <div class="col-md-6 mb-2" *ngFor="let asset of administrativeDetails">
+      <div *ngIf="asset.headerName != 'Processor Details'">
+        <span class="text-color-label" style = "font-size: 18px">{{asset.headerName}}</span>
+        <div class = "box mt-2">
+            <li class="col-md-12 list-group-item form-list" *ngFor="let assetDetail of asset.values | keyvalue">
+                <div class="row">
+                <span class="col-md-4 bg-gray form-label">{{assetDetail.key}}</span>
+                <span class="col-md-8 form-field form-field-color">{{assetDetail.value}}</span>
+              </div>
+              </li>
+              <div *ngIf = "(asset.values | json) == '{}'">No Data Available..</div>
+        </div>
+      </div>
+    </div> -->
+  
+    <div class="row ml-0 mr-0" *ngFor="let asset of administrativeDetails">
+      <div class="mb-3" *ngIf="asset.headerName == 'Processor Details'">
+        <h5 class="text-color-label">{{asset.headerName}}</h5>
+        <div class="box">
+          <div class="table-part">
+            <div class="col-md-12">
+              <table class="table">
+                <thead>
+                  <th *ngFor="let asset2 of asset.values | keyvalue" class="center-all">{{asset2.key}}</th>
+                </thead>
+                <tbody style="font-weight:600;" *ngIf = "(asset.values | json) != '{}'">
+                  <tr class="bl-blue table-card">
+                    <td *ngFor="let asset3 of asset.values | keyvalue" class="center-all">{{asset3.value || 'NA'}}</td>
+                  </tr>
+                  <br>
+                </tbody>
+  
+                <tbody *ngIf = "(asset.values | json) == '{}'">
+                    <tr class="not-found">
+                        No Data Available..
+                    </tr>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row ml-0 mr-0 mb-3" *ngIf = "fileSystemDetails.length > 0">
+        <h5 class="text-color-label">File Systems</h5>
+        <div class="box">
+          <div class="table-part">
+            <div class="col-md-12">
+              <table class="table">
+                <thead>
+                  <th class="center-all">Drive</th>
+                  <th class="center-all">Mount</th>
+                  <th class="center-all">Mounted On</th>
+                  <th class="center-all">FileSystem</th>
+                  <th class="center-all">Total Space (GB)</th>
+                  <th class="center-all">Used Space (GB)</th>
+                  <th class="center-all">Percentages (%)</th>
+                </thead>
+                <tbody style="font-weight:600;" *ngFor="let fileSys of fileSystemDetails">
+                  <tr class="bl-blue table-card m-b-15">
+                    <td class="center-all">{{fileSys.drive || 'NA'}}</td>
+                    <td class="center-all">{{fileSys.mount || 'NA'}}</td>
+                    <td class="center-all">{{fileSys.mountedOn || 'NA'}}</td>
+                    <td class="center-all">{{fileSys.fileSystem || 'NA'}}</td>
+                    <td class="center-all">{{fileSys.totalSpace || 'NA'}}</td>
+                    <td class="center-all">{{fileSys.usedSpace || 'NA'}}</td>
+                    <td class="center-all">{{fileSys.percentages || 'NA'}}</td>
+                  </tr><br>
+                </tbody>
+              </table>
+            </div>
+          </div>
+    </div>
+  </div>
+    <div class="row ml-0 mr-0">
+        <div *ngIf = "netstatDetails.length > 0">
+          <h5 style = "margin-top: 12px">Netstat Details</h5>
+          <div class="box">
+            <div class="table-part">
+              <div class="col-md-12">
+                <table class="table">
+                  <thead>
+                    <th class="center-all">Proto</th>
+                    <th class="center-all">Recv-Q</th>
+                    <th class="center-all">Send-Q</th>
+                    <th class="center-all">Local Address</th>
+                    <th class="center-all">Foriegn Address</th>
+                    <th class="center-all">State</th>
+                    <th class="center-all">Pid</th>
+                  </thead>
+                  <tbody style="font-weight:600;" *ngFor="let netstat of netstatDetails">
+                    <tr class="bl-blue table-card m-b-15">
+                      <td class="center-all">{{netstat.protocol || 'NA'}}</td>
+                      <td class="center-all">{{netstat.receiveQueue || 'NA'}}</td>
+                      <td class="center-all">{{netstat.sendQueue || 'NA'}}</td>
+                      <td class="center-all">{{netstat.localAddress || 'NA'}}</td>
+                      <td class="center-all">{{netstat.foriegnAddress || 'NA'}}</td>
+                      <td class="center-all">{{netstat.state || 'NA'}}</td>
+                      <td class="center-all">{{netstat.pid || 'NA'}}</td>
+                    </tr><br>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>

@@ -1,0 +1,175 @@
+{
+    "allsoftwareInfo": [
+        {
+            "basicSoftwareDetails": {
+                "softwareDetail": {
+                    "id": 1,
+                    "name": "Microsoft Office 365 ProPlus - en-us"
+                },
+                "manufacturer": "Microsoft Corporation",
+                "softwareCategory": {
+                    "id": 1,
+                    "name": "Others"
+                },
+                "softwareType": {
+                    "id": 1,
+                    "name": "Managed"
+                },
+                "description": "Microsoft Offcie Package",
+                "isSuite": true
+            },
+            "softwareLicenseCount": {
+                "installationCount": 5,
+                "licensedCount": 5,
+                "unlicensedCount": 0,
+                "purchasedCount": 5,
+                "availableCount": 0
+            },
+            "licenseExpiryInfo": {
+                "expiredCount": 1,
+                "expiringInSevenDays": 4,
+                "expiringInThirtyDays": 4
+            },
+            "softwareSuiteComponent": [
+                {
+                    "id": 1,
+                    "name": "Microsoft Outlook",
+                    "version": "5.6"
+                },
+                {
+                    "id": 2,
+                    "name": "Microsoft Access",
+                    "version": "6.1"
+                }
+            ]
+        },
+        {
+            "basicSoftwareDetails": {
+                "softwareDetail": {
+                    "id": 2,
+                    "name": "Cisco AnyConnect Secure Mobility Client"
+                },
+                "manufacturer": "Cisco",
+                "softwareCategory": {
+                    "id": 1,
+                    "name": "Others"
+                },
+                "softwareType": {
+                    "id": 1,
+                    "name": "Managed"
+                },
+                "description": "Cisco AnyConnect Secure Mobility Client",
+                "isSuite": false
+            },
+            "softwareLicenseCount": {
+                "installationCount": 5,
+                "licensedCount": 5,
+                "unlicensedCount": 0,
+                "purchasedCount": 5,
+                "availableCount": 0
+            },
+            "licenseExpiryInfo": {
+                "expiredCount": 1,
+                "expiringInSevenDays": 4,
+                "expiringInThirtyDays": 4
+            },
+            "softwareSuiteComponent": []
+        },
+        {
+            "basicSoftwareDetails": {
+                "softwareDetail": {
+                    "id": 3,
+                    "name": "Google Chrome"
+                },
+                "manufacturer": "Google",
+                "softwareCategory": {
+                    "id": 2,
+                    "name": "Internet"
+                },
+                "softwareType": {
+                    "id": 5,
+                    "name": "Freeware"
+                },
+                "description": "Google Chrome",
+                "isSuite": false
+            },
+            "softwareLicenseCount": {
+                "installationCount": 5,
+                "licensedCount": 0,
+                "unlicensedCount": 0,
+                "purchasedCount": 0,
+                "availableCount": 0
+            },
+            "licenseExpiryInfo": {
+                "expiredCount": 0,
+                "expiringInSevenDays": 0,
+                "expiringInThirtyDays": 0
+            },
+            "softwareSuiteComponent": []
+        },
+        {
+            "basicSoftwareDetails": {
+                "softwareDetail": {
+                    "id": 4,
+                    "name": "Python Launcher"
+                },
+                "manufacturer": "Python",
+                "softwareCategory": {
+                    "id": 3,
+                    "name": "Development"
+                },
+                "softwareType": {
+                    "id": 6,
+                    "name": "Unidentified"
+                },
+                "description": "Python Launcher",
+                "isSuite": false
+            },
+            "softwareLicenseCount": {
+                "installationCount": 5,
+                "licensedCount": 0,
+                "unlicensedCount": 0,
+                "purchasedCount": 0,
+                "availableCount": 0
+            },
+            "licenseExpiryInfo": {
+                "expiredCount": 0,
+                "expiringInSevenDays": 0,
+                "expiringInThirtyDays": 0
+            },
+            "softwareSuiteComponent": []
+        },
+        {
+            "basicSoftwareDetails": {
+                "softwareDetail": {
+                    "id": 5,
+                    "name": "Conexant ISST Audio"
+                },
+                "manufacturer": "Conexant",
+                "softwareCategory": {
+                    "id": 1,
+                    "name": "Multimedia"
+                },
+                "softwareType": {
+                    "id": 4,
+                    "name": "Prohibited"
+                },
+                "description": "Conexant ISST Audio",
+                "isSuite": false
+            },
+            "softwareLicenseCount": {
+                "installationCount": 5,
+                "licensedCount": 0,
+                "unlicensedCount": 0,
+                "purchasedCount": 0,
+                "availableCount": 0
+            },
+            "licenseExpiryInfo": {
+                "expiredCount": 0,
+                "expiringInSevenDays": 0,
+                "expiringInThirtyDays": 0
+            },
+            "softwareSuiteComponent": []
+        }
+    ]
+}

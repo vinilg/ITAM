@@ -1,0 +1,225 @@
+<div class="m-l-10">
+  <div class="col-md-12 p-all-0">
+    <div class="col-md-6 pull-left p-all-0 m-b-5">
+      <h4 class="text-color-label">{{isEdit?'Edit License':'Add New License'}}</h4>
+    </div>
+  </div>
+
+  <div class="box">
+    <div *ngIf="dataLoader">
+      <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+    </div>
+    <form #f="ngForm" (ngSubmit)="f.form.valid && onAddUpdateLicense(licenseDetails)" novalidate *ngIf="!dataLoader">
+      <div class="mb-4" style="background-color: #ffffff !important">
+        <div class="row">
+          <ng-container>
+            <div class="col-md-12 creation-type">
+              <label class="col-md-2 col-form-label mandate text-right">Creation Type</label>
+              <mat-radio-group name="creationType" [(ngModel)]="licenseDetails.creationType">
+                <mat-radio-button class="col-md-3" *ngFor="let type of creationType" [value]="type">{{type}}</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label mandate text-right">Licenses</label>
+                <div class="col-md-6">
+                  <mat-form-field>
+                    <mat-select name="licenses" [(ngModel)]="licenseDetails.selectedLicense" #licenses="ngModel" required [disabled]="licenseDetails.creationType == 'Basic License'">
+                      <mat-option [value]="license.id" *ngFor="let license of allLicense">{{license.name}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="licenses.errors?.required && (licenses.touched || f.submitted)">
+                      please select atleast one licenses</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label text-right mandate">License Name</label>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" name="licenseName" [(ngModel)]="licenseDetails.licenseName" #licenseName="ngModel"
+                    [ngClass]="{ 'input-error': licenseName.errors?.required && (licenseName.touched || f.submitted)}" required>
+                  <div *ngIf="licenseName.errors?.required && (licenseName.touched || f.submitted)" class="error-text">
+                    license name is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label mandate text-right">Vendor</label>
+                <div class="col-md-6">
+                  <mat-form-field>
+                    <mat-select name="Vendor" [(ngModel)]="licenseDetails.selectedVendor" #Vendor="ngModel" required>
+                      <mat-option [value]="vendor.id" *ngFor="let vendor of licenseMasterData.vendors">{{vendor.name}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="Vendor.errors?.required && (Vendor.touched || f.submitted)">
+                      please select atleast one vendor</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label mandate text-right">OEM</label>
+                <div class="col-md-6">
+                  <mat-form-field>
+                    <mat-select name="oem" [(ngModel)]="licenseDetails.selectedOem" #oem="ngModel" required>
+                      <mat-option [value]="oem.id" *ngFor="let oem of licenseMasterData.oemMasters">{{oem.name}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="oem.errors?.required && (oem.touched || f.submitted)">
+                      please select atleast one OEM</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label mandate text-right">Capacity Type</label>
+                <div class="col-md-6">
+                  <mat-form-field>
+                    <mat-select name="capacityType" [(ngModel)]="licenseDetails.capacityType" #capacityType="ngModel" required>
+                      <mat-option [value]="capacity.id" *ngFor="let capacity of licenseMasterData.capacityTypes">{{capacity.name}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="capacityType.errors?.required && (capacityType.touched || f.submitted)">
+                      please select atleast one capacity type</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label text-right mandate">PO Number</label>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" name="po" [(ngModel)]="licenseDetails.poNumber" #po="ngModel" [ngClass]="{ 'input-error': po.errors?.required && (po.touched || f.submitted)}"
+                    required>
+                  <div *ngIf="po.errors?.required && (po.touched || f.submitted)" class="error-text">
+                    PO number required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label text-right mandate">License Quantity</label>
+                <div class="col-md-6">
+                  <input type="number" class="form-control" name="purchaseCount" [(ngModel)]="licenseDetails.purchaseCount" #purchaseCount="ngModel"
+                    [ngClass]="{ 'input-error':purchaseCount.errors?.required && (purchaseCount.touched || f.submitted)}" required>
+                  <div *ngIf="purchaseCount.errors?.required && (purchaseCount.touched || f.submitted)" class="error-text">
+                    license count required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label text-right mandate">Active License Quantity</label>
+                <div class="col-md-6">
+                  <input type="number" class="form-control" name="activeLicense" [(ngModel)]="licenseDetails.activeLicenseCount" #activeLicense="ngModel"
+                    [ngClass]="{ 'input-error':activeLicense.errors?.required && (activeLicense.touched || f.submitted)}"
+                    required>
+                  <div *ngIf="activeLicense.errors?.required && (activeLicense.touched || f.submitted)" class="error-text">
+                    active license count required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label mandate text-right">PO Start Date</label>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [matDatepicker]="startDate" [(ngModel)]="licenseDetails.poStartDate" #startDate="ngModel"  name="startDate"
+                      required autocomplete="off">
+                      <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                        <mat-datepicker #startDate></mat-datepicker>
+                          <mat-error *ngIf="startDate.errors?.required && (startDate.touched || f.submitted)">
+                            PO start date required
+                            </mat-error>
+                            </mat-form-field>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label mandate text-right">PO End Date</label>
+            <div class="col-md-6">
+              <mat-form-field class="example-full-width">
+                <input matInput [matDatepicker]="poEndDate"  [(ngModel)]="licenseDetails.poEndDate" #poEndDate="ngModel"  name="poEndDate"
+                  required autocomplete="off">
+                  <mat-datepicker-toggle matSuffix [for]="poEndDate"></mat-datepicker-toggle>
+                    <mat-datepicker #poEndDate></mat-datepicker>
+                      <mat-error *ngIf="poEndDate.errors?.required && (poEndDate.touched || f.submitted)">
+                        PO end date required
+                      </mat-error>
+                </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label text-right">Purchase Cost</label>
+          <div class="col-md-6">
+            <input type="number" class="form-control" name="purchaseCost" [(ngModel)]="licenseDetails.purchaseCost" #purchaseCost="ngModel">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label text-right mandate">Responsible Person</label>
+          <div class="col-md-6">
+            <input type="text" class="form-control" name="responsiblePerson" [(ngModel)]="licenseDetails.responsiblePerson" #responsiblePerson="ngModel"
+              [ngClass]="{ 'input-error': responsiblePerson.errors?.required && (responsiblePerson.touched || f.submitted)}"
+              required>
+            <div *ngIf="responsiblePerson.errors?.required && (responsiblePerson.touched || f.submitted)" class="error-text">
+              responsible person required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label class="col-md-4 col-form-label text-right mandate">License Type</label>
+        <mat-radio-group name="licensesType" [(ngModel)]="licenseDetails.licenseType">
+          <mat-radio-button class="col-md-3" *ngFor="let lType of licenseType" [value]="lType">{{lType}}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="col-md-6">
+        <label class="col-md-4 col-form-label text-right mandate">Status</label>
+        <mat-radio-group name="status" [(ngModel)]="licenseDetails.status">
+          <mat-radio-button class="col-md-3" [value]=1>Active</mat-radio-button>
+          <mat-radio-button class="col-md-3" [value]=0>Inactive</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="col-md-6 mt-4">
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label text-right">License Key</label>
+          <div class="col-md-6">
+            <input type="text" class="form-control" name="licenseKey" [(ngModel)]="licenseDetails.licenseKey" #licenseKey="ngModel">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mt-4">
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label text-right">Description</label>
+          <mat-form-field class="example-full-width col-md-6">
+            <textarea matInput name="description" [(ngModel)]="licenseDetails.description"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      </ng-container>
+  </div>
+  <div>
+    <button type="button" class="btn btn-primary bg-set-secondary pull-right ml-3" [routerLink]="['/ocs/sam/licenses']" *ngIf="!isEdit">CANCEL</button>
+    <button type="button" class="btn btn-primary bg-set-secondary pull-right ml-3" [routerLink]="['/ocs/sam/license-details/',licenseId]"
+      *ngIf="isEdit">CANCEL</button>
+    <button type="submit" class="btn btn-primary bg-set pull-right">{{isEdit?'UPDATE':'ADD'}}</button>
+  </div>
+</div>
+</form>
+</div>
+</div>

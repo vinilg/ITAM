@@ -1,0 +1,139 @@
+<div class="m-t-25">
+  <div class="row col-md-12 m-t-25">
+    <h4>Existing Data</h4>
+    <div class="box">
+      <accordion>
+        <accordion-group class="p-b-5" *ngFor="let extData of deltaSoftwareCompareData | keyvalue">
+          <button class="btn btn-link btn-block clearfix" accordion-heading>
+            <div class="pull-left float-left">{{extData.key}}</div>
+            <i class="fa fa-angle-double-right pull-right" style="font-size: 20px;" aria-hidden="true"></i>
+          </button>
+          <div class="box m-b-15">
+            <div class="table-part">
+              <div class="col-md-12" style = "max-height: 228px;overflow-y: auto">
+                <table class="table">
+                  <thead>
+                      <th class="center-all">
+                          <mat-checkbox [checked]="extData.isChecked" (change)="onExistingChangeSelectAll($event, extData)"></mat-checkbox>
+                        </th>
+                    <th class="center-all">Software Name</th>
+                    <th class="center-all">Field Name</th>
+                    <th class="center-all">Origna Value</th>
+                    <th class="center-all">Changed Value</th>
+                  </thead>
+                  <tbody style="font-weight:600;">
+                    <tr class="bl-blue table-card" *ngFor="let existingData of extData.value; let i=index">
+                        <td class="center-all">
+                            <mat-checkbox [checked]="existingData.isChecked" (change)="onExistingChange($event,i,existingData, extData)"></mat-checkbox>
+                          </td>
+                      <td class="center-all">{{existingData.softwareName || 'NA'}}</td>
+                      <td class="center-all">{{existingData.columnName || 'NA'}}</td>
+                      <td class="center-all">{{existingData.orignalValue || 'NA'}}</td>
+                      <td class="center-all">{{existingData.changedValue || 'NA'}}</td>
+                    </tr>
+                    <br>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </accordion-group>
+        <div class="center-all" *ngIf="deltaSoftwareCompareDataKey.length == 0">
+          <h6>No data available</h6>
+        </div>
+      </accordion>
+    </div>
+  </div>
+</div>
+
+<div class="m-t-25">
+  <div class="row col-md-12 m-t-25">
+    <h4>Deleted Data</h4>
+    <div class="box">
+      <accordion>
+        <accordion-group class="p-b-5" *ngFor="let delData of deltaSoftwareDeletedDataObj" (click)="getDeletedObj(delData.id)">
+          <button class="btn btn-link btn-block clearfix" accordion-heading>
+            <div class="pull-left float-left">{{delData.name}}</div>
+            <i class="fa fa-angle-double-right pull-right" style="font-size: 20px;" aria-hidden="true"></i>
+          </button>
+          <div class="box m-b-15">
+            <div class="table-part" *ngIf="deltaSoftwareDeletedDataKey.length > 0">
+              <div class="col-md-12">
+                <table class="table">
+                  <thead>
+                    <th class="center-all">Sr No.</th>
+                    <th class="center-all">Publisher</th>
+                    <th class="center-all">Software Name</th>
+                    <th class="center-all">Version</th>
+                    <th class="center-all">Folder</th>
+                    <th class="center-all">Installation Date</th>
+                  </thead>
+                  <tbody style="font-weight:600;">
+                    <tr class="bl-blue table-card" *ngFor="let deletedData of deletedTableData; let i=index">
+                      <td class="center-all pointer">{{i + 1}}</td>
+                      <td class="center-all">{{deletedData.publisher || 'NA'}}</td>
+                      <td class="center-all">{{deletedData.softwareName || 'NA'}}</td>
+                      <td class="center-all">{{deletedData.version || 'NA'}}</td>
+                      <td class="center-all">{{deletedData.folder || 'NA'}}</td>
+                      <td class="center-all">{{deletedData.installDate || 'NA'}}</td>
+                    </tr>
+                    <br>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </accordion-group>
+        <div class="center-all" *ngIf="deltaSoftwareDeletedDataKey.length == 0">
+          <h6>No data available</h6>
+        </div>
+      </accordion>
+    </div>
+  </div>
+</div>
+
+<div class="m-t-25">
+  <div class="row col-md-12 m-t-25">
+    <h4>New Data</h4>
+    <div class="box">
+      <accordion>
+        <accordion-group class="p-b-5" *ngFor="let newDatas of deltaSoftwareNewDataObj" (click)="getNewObj(newDatas.id)">
+          <button class="btn btn-link btn-block clearfix" accordion-heading>
+            <div class="pull-left float-left">{{newDatas.name}}</div>
+            <i class="fa fa-angle-double-right pull-right" style="font-size: 20px;" aria-hidden="true"></i>
+          </button>
+          <div class="box m-b-15">
+            <div class="table-part" *ngIf="deltaSoftwareCompareDataKey.length > 0">
+              <div class="col-md-12">
+                <table class="table">
+                  <thead>
+                    <th class="center-all">Sr No.</th>
+                    <th class="center-all">Publisher</th>
+                    <th class="center-all">Software Name</th>
+                    <th class="center-all">Version</th>
+                    <th class="center-all">Folder</th>
+                    <th class="center-all">Installation Date</th>
+                  </thead>
+                  <tbody style="font-weight:600;">
+                    <tr class="bl-blue table-card" *ngFor="let newData of newTableData; let i=index">
+                      <td class="center-all pointer">{{i + 1}}</td>
+                      <td class="center-all">{{newData.publisher || 'NA'}}</td>
+                      <td class="center-all">{{newData.softwareName || 'NA'}}</td>
+                      <td class="center-all">{{newData.version || 'NA'}}</td>
+                      <td class="center-all">{{newData.folder || 'NA'}}</td>
+                      <td class="center-all">{{newData.installDate || 'NA'}}</td>
+                    </tr>
+                    <br>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </accordion-group>
+        <div class="center-all" *ngIf="deltaSoftwareNewDataKey.length == 0">
+          <h6>No data available</h6>
+        </div>
+      </accordion>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+{
+  "leftMenu": [
+    {
+      "icon": "fa-tachometer",
+      "label": "Hardware-Dashboard",
+      "value": "ocs/dashboard"
+    },
+    {
+      "icon": "icon-home",
+      "label": "Asset",
+      "value": "ocs/asset"
+    },
+    {
+      "icon": "fa fa-cogs",
+      "label": "Software Dashboard",
+      "value": "ocs/sam-dashboard",
+      "child":[{
+        "icon": "fa fa-cog",
+      "label": "Software Summary",
+      "value": "ocs/sam"
+      },
+      {
+      "icon": "fa fa-id-card",
+      "label": "Software Licenses",
+      "value": "ocs/sam/licenses"
+    }]
+    },
+    {
+      "icon": "fa-bar-chart",
+      "label": "Reports",
+      "value": "ocs/reports"
+    }
+  ]
+}

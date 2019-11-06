@@ -1,0 +1,125 @@
+{
+    "softwareSummary": [
+        {
+            "basicSoftwareDetails": {
+                "id": 1,
+                "name": "Microsoft Office 365 ProPlus - en-us"
+            },
+            "softwareCounts": {
+                "purchasedCount": 5,
+                "installedCount": 5,
+                "allocatedCount": 0,
+                "availableCount": 0
+            },
+            "complianceType": {
+                "id": 1,
+                "name": "Complaint"
+            },
+            "softwareType": {
+                "id": 3,
+                "name": "Managed"
+            },
+            "isSuite": true,
+            "softwareSuiteComponent": [
+                {
+                    "id": 1,
+                    "name": "Microsoft Outlook",
+                    "version": "5.6"
+                },
+                {
+                    "id": 2,
+                    "name": "Microsoft Access",
+                    "version": "6.1"
+                }
+            ]
+        },
+        {
+            "basicSoftwareDetails": {
+                "id": 2,
+                "name": "Cisco AnyConnect Secure Mobility Client"
+            },
+            "softwareCounts": {
+                "purchasedCount": 5,
+                "installedCount": 4,
+                "allocatedCount": 0,
+                "availableCount": 1
+            },
+            "complianceType": {
+                "id": 1,
+                "name": "Over Licensed"
+            },
+            "softwareType": {
+                "id": 3,
+                "name": "Managed"
+            },
+            "isSuite": false,
+            "softwareSuiteComponent": []
+        },
+        {
+            "basicSoftwareDetails": {
+                "id": 3,
+                "name": "Google Chrome"
+            },
+            "softwareCounts": {
+                "purchasedCount": 0,
+                "installedCount": 5,
+                "allocatedCount": 0,
+                "availableCount": 0
+            },
+            "complianceType": {
+                "id": 2,
+                "name": "NA"
+            },
+            "softwareType": {
+                "id": 5,
+                "name": "Freeware"
+            },
+            "isSuite": false,
+            "softwareSuiteComponent": []
+        },
+        {
+            "basicSoftwareDetails": {
+                "id": 4,
+                "name": "Python Launcher"
+            },
+            "softwareCounts": {
+                "purchasedCount": 0,
+                "installedCount": 5,
+                "allocatedCount": 0,
+                "availableCount": 0
+            },
+            "complianceType": {
+                "id": 4,
+                "name": "NA"
+            },
+            "softwareType": {
+                "id": 6,
+                "name": "Unidentified"
+            },
+            "isSuite": false,
+            "softwareSuiteComponent": []
+        },
+        {
+            "basicSoftwareDetails": {
+                "id": 5,
+                "name": "Conexant ISST Audio"
+            },
+            "softwareCounts": {
+                "purchasedCount": 0,
+                "installedCount": 5,
+                "allocatedCount": 0,
+                "availableCount": 0
+            },
+            "complianceType": {
+                "id": 4,
+                "name": "NA"
+            },
+            "softwareType": {
+                "id": 4,
+                "name": "Prohibited"
+            },
+            "isSuite": false,
+            "softwareSuiteComponent": []
+        }
+    ]
+}

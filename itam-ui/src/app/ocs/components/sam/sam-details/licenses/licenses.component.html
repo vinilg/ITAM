@@ -1,0 +1,53 @@
+<div class="box m-t-15">
+    <div *ngIf="dataLoader">
+        <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+      </div>
+  <div class="table-part max-height" *ngIf="!dataLoader && selectedSoftwareLicenseInfo.length > 0">
+    <div class="col-md-12">
+      <table class="table">
+        <thead>
+          <th class="center-all">License</th>
+          <th class="center-all">Purchased</th>
+          <th class="center-all">Available</th>
+          <th class="center-all">Active License</th>
+          <th class="center-all">Creation Type</th>
+          <th class="center-all">Vendor</th>
+          <th class="center-all">OEM</th>
+          <th class="center-all">Capacity Type</th>
+          <th class="center-all">License Type</th>
+          <th class="center-all">PO Number</th>
+          <th class="center-all">Purchase Cost</th>
+          <th class="center-all">PO Start Date</th>
+          <th class="center-all">PO End Date</th>
+          <th class="center-all">Responsible User</th>
+        </thead>
+        <tbody style="font-weight:600;" *ngFor="let license of selectedSoftwareLicenseInfo">
+          <tr class="bl-blue table-card">
+            <td class="center-all pointer">
+              <a [routerLink]="['/ocs/sam/license-details/',license.id]">{{license.name}}</a>
+            </td>
+            <td class="center-all">{{license.licenseCount}}</td>
+            <td class="center-all">{{license.availableCount}}</td>
+            <td class="center-all">{{license.activeLicenseCount}}</td>
+            <td class="center-all">{{license.creationType || 'NA'}}</td>
+            <td class="center-all">{{license.vendor.name || 'NA'}}</td>
+            <td class="center-all">{{license.oem.name || 'NA'}}</td>
+            <td class="center-all">{{license.capacityTypeDto.name || 'NA'}}</td>
+            <td class="center-all">{{license.licenseType || 'NA'}}</td>
+            <td class="center-all">{{license.poNumber || 'NA'}}</td>
+            <td class="center-all">{{license.purchaseCost || 'NA'}}</td>
+            <td class="center-all">{{license.licenseStartDate || 'NA'}}</td>
+            <td class="center-all">{{license.licenseEndDate || 'NA'}}</td>
+            <td class="center-all">{{license.responsiblePerson || 'NA'}}</td>
+          </tr>
+          <br>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="table-part" *ngIf="selectedSoftwareLicenseInfo.length == 0 && !dataLoader">
+      <div>
+          <h6 class="center-all" style="padding: 10px">No Data Availble.</h6>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,103 @@
+<div class="m-l-10">
+  <div class="col-md-12 p-all-0">
+    <div class="col-md-6 pull-left p-all-0 m-b-5">
+      <h4 class="text-color-label">Software To License Configuration</h4>
+    </div>
+  </div>
+  <div class="box">
+    <div class="middle" *ngIf="false">
+      <div>
+        <h2 class="mb-4" style="text-align: center">Let's Search Softwares</h2>
+        <div class="input-group">
+          <input type="text" class="search-field" placeholder="Search keyword" [(ngModel)]="searchKeyword">
+          <div class="input-group-append">
+            <button class="btn search-button" type="button">
+              <i class="fa fa-search search-icon"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="true">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="input-group">
+            <input type="text" class="search-field" placeholder="Search keyword" [(ngModel)]="searchedKeyword">
+            <div class="input-group-append">
+              <button class="btn search-button" type="button" (click) = "searchSoftwares(searchedKeyword)">
+                <i class="fa fa-search search-icon"></i>
+              </button>
+            </div>
+            <span class="text-danger" *ngIf="isSubmitted && searchedKeyword == '' && selectedLicense && listOfSoftwareToRemove.length == 0">Enter valid keyword</span>
+          </div>
+          <div class="mt-3">
+            <label class="text-color-label mb-0" style="font-size:15px;">Identified Software <span class="text-danger ml-2" *ngIf="searchedKeyword != '' && searchedSoftwareDetails.length > 0 && listOfSoftwaresForMapping.length == 0 && isSubmitted">Select atleast one software</span></label>
+            <div class="table-part" style="max-height: 400px" *ngIf="searchedSoftwareDetails.length > 0">
+              <div class="col-md-12">
+                <table class="table">
+                  <thead>
+                    <th class="center-all">Action</th>
+                    <th class="center-all">Software Name</th>
+                  </thead>
+                  <tbody *ngFor="let searchSof of searchedSoftwareDetails">
+                    <tr class="bl-blue table-card">
+                      <td class="center-all">
+                        <mat-checkbox (change)="onAddSoftwareChange(searchSof, $event)"></mat-checkbox>
+                      </td>
+                      <td class="center-all">{{searchSof?.name}}</td>
+                    </tr>
+                    <br>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="box mt-2 message-color" *ngIf="searchedSoftwareDetails.length == 0">
+              Use Proper Keyword To Fetch Software Details..
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <ngx-select-dropdown (change)="selectionChanged(selectedLicense)" [multiple]="false" [(ngModel)]="selectedLicense" [config]="config"
+            [options]="licenseMaster"></ngx-select-dropdown>
+          <span class="text-danger" *ngIf="searchedKeyword != '' && searchedSoftwareDetails.length > 0 && listOfSoftwaresForMapping.length > 0 && isSubmitted && !selectedLicense">License name required</span>
+          <div class="mt-3">
+            <label class="text-color-label mb-0" style="font-size:15px;">Already Mapped Softwares</label>
+            <div class="table-part" style="max-height: 400px" *ngIf="softwareMappingDetails.length > 0">
+              <div class="col-md-12">
+                <table class="table">
+                  <thead>
+                    <th class="center-all">Action</th>
+                    <th class="center-all">Software Name</th>
+                  </thead>
+                  <tbody *ngFor="let mapSof of softwareMappingDetails">
+                    <tr class="bl-blue table-card">
+                      <td class="center-all">
+                        <mat-checkbox (change)="onRemoveSoftwareMappingChange(mapSof, $event)"></mat-checkbox>
+                      </td>
+                      <td class="center-all">{{mapSof?.name}}</td>
+                    </tr>
+                    <br>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="box mt-2 message-color" *ngIf="(searchedKeyword != '' || searchedKeyword != null) && !selectedLicense">
+                Please Select License Name To Get Mapping Details..
+            </div>
+            <div class="box mt-2 message-color" *ngIf="selectedLicense && softwareMappingDetails.length == 0">
+                No Record Found..
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-3" *ngIf="dataLoader">
+          <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+      </div>
+      <div class="mt-5 wrapper">
+        <input type="button" class="btn btn-primary bg-set text-uppercase" value="Submit" (click)="onSubmit()">
+        <input type="button" class="btn btn-primary bg-set-secondary text-uppercase ml-3" value="Cancel" [routerLink]="['/ocs/sam/licenses']">
+      </div>
+    </div>
+  </div>
+</div>

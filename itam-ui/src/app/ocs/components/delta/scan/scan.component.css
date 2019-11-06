@@ -1,0 +1,10 @@
+ .btn-center{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.scan{
+    margin: auto;
+    margin-bottom: 25px;
+}

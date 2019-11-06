@@ -1,0 +1,118 @@
+<div class="card">
+    <!-- <h6 class="card-header card-header-color"><span class ="card-header-label">Asset - {{assetName}}</span></h6> -->
+    <div class="card-body">
+        <div class="">
+            <div class="row p-lr-10">
+              <li class="col-md-6 list-group-item form-list">
+                <div class="row">
+                  <span class="col-md-4 bg-gray form-label">Host Name</span>
+                  <span class="col-md-8 form-field form-field-color">{{hostDetails.hostName || 'NA'}}</span>
+                </div>
+              </li>
+              <li class="col-md-6 list-group-item form-list">
+                  <div class="row">
+                    <span class="col-md-4 bg-gray form-label">IP Address</span>
+                    <span class="col-md-8 form-field form-field-color">{{hostDetails.hostIp || 'NA'}}</span>
+                  </div>
+                </li>
+              <li class="col-md-6 list-group-item form-list">
+                <div class="row">
+                  <span class="col-md-4 bg-gray form-label">Model</span>
+                  <span class="col-md-8 form-field form-field-color">{{hostDetails.hostModel || 'NA'}}</span>
+                </div>
+              </li>
+              <li class="col-md-6 list-group-item form-list">
+                  <div class="row">
+                    <span class="col-md-4 bg-gray form-label">Vendor</span>
+                    <span class="col-md-8 form-field form-field-color">{{hostDetails.hostVendor || 'NA'}}</span>
+                  </div>
+                </li>
+                <li class="col-md-6 list-group-item form-list">
+                    <div class="row">
+                      <span class="col-md-4 bg-gray form-label">Serial Number</span>
+                      <span class="col-md-8 form-field form-field-color">{{hostDetails.hostSerialNumber || 'NA'}}</span>
+                    </div>
+                  </li>
+              <li class="col-md-6 list-group-item form-list">
+                <div class="row">
+                  <span class="col-md-4 bg-gray form-label">CPU Type</span>
+                  <span class="col-md-8 form-field form-field-color">{{hostDetails.hostCpuType || 'NA'}}</span>
+                </div>
+              </li>
+              <li class="col-md-6 list-group-item form-list">
+                <div class="row">
+                  <span class="col-md-4 bg-gray form-label">Cores</span>
+                  <span class="col-md-8 form-field form-field-color">{{hostDetails.hostCpuCore || 'NA'}}</span>
+                </div>
+              </li>
+              <li class="col-md-6 list-group-item form-list">
+                  <div class="row">
+                    <span class="col-md-4 bg-gray form-label">Thread</span>
+                    <span class="col-md-8 form-field form-field-color">{{hostDetails.hostCpuThread || 'NA'}}</span>
+                  </div>
+                </li>
+              <li class="col-md-6 list-group-item form-list">
+                <div class="row">
+                  <span class="col-md-4 bg-gray form-label">Processor Count</span>
+                  <span class="col-md-8 form-field form-field-color">{{hostDetails.hostPhysicalCpuCount || 'NA'}}</span>
+                </div>
+              </li>
+              <li class="col-md-6 list-group-item form-list">
+                  <div class="row">
+                    <span class="col-md-4 bg-gray form-label">Cluster Name</span>
+                    <span class="col-md-8 form-field form-field-color">{{hostDetails.hostClusterName || 'NA'}}</span>
+                  </div>
+                </li>
+                  <li class="col-md-6 list-group-item form-list">
+                      <div class="row">
+                        <span class="col-md-4 bg-gray form-label">VMotion Status</span>
+                        <span class="col-md-8 form-field form-field-color">{{hostDetails.hostVmotionStatus || 'NA'}}</span>
+                      </div>
+                    </li>
+                    <li class="col-md-6 list-group-item form-list">
+                        <div class="row">
+                          <span class="col-md-4 bg-gray form-label">OS Name</span>
+                          <span class="col-md-8 form-field form-field-color">{{hostDetails.hostOsName || 'NA'}}</span>
+                        </div>
+                      </li>
+            </div>
+            <div class="row ml-0 mr-0 mb-3 mt-3">
+                <h5 class="text-color-label">VM Details</h5>
+                <div class="box">
+                  <div class="table-part" style="max-height: 160px" *ngIf="vmDetails?.length > 0">
+                    <div class="col-md-12">
+                      <table class="table">
+                        <thead>
+                          <th class="center-all">Name</th>
+                          <th class="center-all">OS</th>
+                          <th class="center-all">Power State</th>
+                          <th class="center-all">License</th>
+                          <th class="center-all">License Key</th>
+                        </thead>
+                        <tbody style="font-weight:600;" *ngFor="let vm of vmDetails">
+                          <tr class="bl-blue table-card">
+                            <td class="center-all">{{vm.vmName || 'NA'}}</td>
+                            <td class="center-all">{{vm.vmOsName || 'NA'}}</td>
+                            <td class="center-all">{{vm.vmPowerdState || 'NA'}}</td>
+                            <td class="center-all">{{vm.vmLicenseName || 'NA'}}</td>
+                            <td class="center-all">{{vm.vmLicenseKey || 'NA'}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="table-part" *ngIf="vmDetails?.length == 0">
+                      <div>
+                          <h6 class="center-all" style="padding: 10px">Data Not Availble.</h6>
+                      </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+         
+    </div>
+  </div>
+
+
+

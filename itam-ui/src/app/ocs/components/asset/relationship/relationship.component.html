@@ -1,0 +1,13 @@
+<div class="m-t-10">
+<div *ngIf="dataLoader" class="m-t-25">
+        <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+</div>
+
+<div class="box">
+    <button class="btn btn-primary bg-set-relation pull-right text-uppercase" (click)="onClickAddRelationship()"><i class="fa fa-plus relationship" aria-hidden="true"></i>Add Relationship</button>
+<div id="chart" *ngIf = "!noDataFound"></div>
+<div *ngIf="noDataFound">
+    <h6 class="center-all">No Data Availble.</h6>
+  </div>
+</div>
+  </div>

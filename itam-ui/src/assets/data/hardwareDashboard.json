@@ -1,0 +1,154 @@
+{
+"assetTilesData":{
+    "totalAssets":12000,
+    "activeAssets":8000,
+    "inActiveAssets":4000,
+    "assetsInLastSevenDays":90,
+    "assetContractsExpiredInSevenDays":7,
+    "assetContractsExpiredInThirtyDays":30
+},
+"assetOs":[{
+    "name": "Windows",
+    "y": 50
+  },
+  {
+    "name": "Linux",
+    "y": 50
+  },
+  {
+    "name": "Mac",
+    "y": 50
+  }],
+"assetCategories":[{
+    "name": "Server",
+    "y": 24 
+},
+{
+    "name": "V.Server",
+    "y": 21 
+},
+{
+    "name": "Laptop",
+    "y": 110 
+},
+{
+    "name": "IP Telephony",
+    "y": 12  
+},
+{
+    "name": "Switch",
+    "y": 14  
+},
+{
+    "name": "Router",
+    "y": 50  
+},
+{
+    "name": "Printer",
+    "y": 45 
+},
+{
+    "name": "Access Point",
+    "y": 48  
+},
+{
+    "name": "Fax",
+    "y": 9  
+},
+{
+    "name": "Firewall",
+    "y": 7  
+},
+{
+    "name": "Rack",
+    "y": 22  
+},
+{
+    "name": "Room Sensors",
+    "y": 30  
+},
+{
+    "name": "Smart Phones",
+    "y": 24  
+},
+{
+    "name": "Storage Device",
+    "y": 60  
+},
+{
+    "name": "Tablet",
+    "y": 13  
+},
+{
+    "name": "UPS",
+    "y": 40  
+},
+{
+    "name": "Video Encoder",
+    "y": 5  
+},
+{
+    "name": "IPS",
+    "y": 10  
+},
+{
+    "name": "NTP",
+    "y": 17  
+},
+{
+    "name": "Others",
+    "y": 30  
+}],
+
+"assetManufacturer":{
+    "manufacturer":["Apple Inc.", "Dell Inc.", "HP", "Phonix", "Cisco"],
+    "manufacturerData":[
+        {
+            "name": "Apple Inc.",
+            "y": 107  
+        },
+        {
+            "name": "Dell Inc.",
+            "y": 31 
+        },
+        {
+            "name": "HP",
+            "y": 635  
+        },
+        {
+            "name": "Phonix",
+            "y": 203 
+        },
+        {
+            "name": "Cisco",
+            "y": 600 
+        }
+    ]
+},
+"assetStatus":[
+    {
+        "name": "In Use",
+        "y": 59  
+    },
+    {
+        "name": "On Order",
+        "y": 14  
+    },
+    {
+        "name": "In Maintenance",
+        "y": 13  
+    },
+    {
+        "name": "Retired",
+        "y": 4  
+    },
+    {
+        "name": "Missing",
+        "y": 4  
+    },
+    {
+        "name": "In transit",
+        "y": 5  
+    }
+]
+}

@@ -1,0 +1,121 @@
+<div class="m-l-10">
+    <div class="box  m-t-15">
+        <div *ngIf="dataLoader">
+            <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+        </div>
+        <mat-tab-group class="col-md-12 col-sm-12 p-all-0" (selectedTabChange)="loadTabComponent($event)" *ngIf="!dataLoader" [selectedIndex]="selectedTab">
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span class="license-num">{{installationDetails.length}}</span>
+                    <span class="license-data">Licensed</span>
+                </ng-template>
+                <input type="button" class="btn btn-primary bg-set text-uppercase m-t-10 pull-right" value="Exclude" *ngIf="installationDetails.length > 0"
+                    (click)="openExcludePopup()" [disabled]="listOfAssetsToExclude.length == 0">
+                <div class="table-part1 max-height" *ngIf="installationDetails.length > 0 && !dataLoader">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead>
+                                <th class="center-all"></th>
+                                <th class="center-all">Asset Name</th>
+                                <th class="center-all">Category</th>
+                                <th class="center-all">Asset Family</th>
+                                <th class="center-all">Location</th>
+                                <th class="center-all">Site</th>
+                                <th class="center-all">Serial Number</th>
+                                <th class="center-all">User</th>
+                                <th class="center-all">AMC Expiry Date</th>
+                                <th class="center-all">PO Number</th>
+                                <th class="center-all">Owner Name</th>
+                                <th class="center-all">Status</th>
+                                <th class="center-all">Source</th>
+                            </thead>
+                            <tbody style="font-weight:600;" *ngFor="let installation of installationDetails">
+                                <tr class="bl-blue table-card">
+                                    <td class="center-all">
+                                        <mat-checkbox (change)="onAssetExcludeChange(installation, $event)"></mat-checkbox>
+                                    </td>
+                                    <!-- <td class="center-all pointer">
+                                    <a [routerLink]="['/ocs/asset-details/',installation.id]" target="_blank">{{installation.id}}</a>
+                                </td> -->
+                                    <td class="center-all pointer">
+                                        <a [routerLink]="['/ocs/asset-details/',installation.id]" target="_blank">{{installation.hardwareName}}</a>
+                                    </td>
+                                    <td class="center-all">{{installation.assetCategory.name || 'NA'}}</td>
+                                    <td class="center-all">{{installation.assetFamily || 'NA'}}</td>
+                                    <td class="center-all">{{installation.location?.name || 'NA'}}</td>
+                                    <td class="center-all">{{installation.site?.name || 'NA'}}</td>
+                                    <td class="center-all">{{installation.serialNumber || 'NA'}}</td>
+                                    <td class="center-all" style="word-break: break-all">{{installation.connectedUser || 'NA'}}</td>
+                                    <td class="center-all">{{installation.supportEndDate || 'NA'}}</td>
+                                    <td class="center-all">{{installation.poNumber || 'NA'}}</td>
+                                    <td class="center-all">{{installation.ownerName || 'NA'}}</td>
+                                    <td class="center-all">{{installation.assetStatus.name || 'NA'}}</td>
+                                    <td class="center-all">{{installation.sourceName || 'NA'}}</td>
+                                </tr>
+                                <br>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="table-part" *ngIf="installationDetails.length == 0 && !dataLoader">
+                    <div>
+                        <h6 class="center-all" style="padding: 10px">No Data Availble.</h6>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span class="license-num">{{excludedInstallationDetails.length}}</span>
+                    <span class="license-data">Excluded</span>
+                </ng-template>
+                <div class="table-part" *ngIf="excludedInstallationDetails.length > 0 && !dataLoader">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead>
+                                <th class="center-all">Id</th>
+                                <th class="center-all">Asset Name</th>
+                                <th class="center-all">Category</th>
+                                <th class="center-all">Asset Family</th>
+                                <th class="center-all">Serial Number</th>
+                                <th class="center-all">User</th>
+                                <th class="center-all">AMC Expiry Date</th>
+                                <th class="center-all">Status</th>
+                                <th class="center-all">Source</th>
+                                <th class="center-all">Reason</th>
+                                <th class="center-all">License Name</th>
+                                <th class="center-all">Excluded Comments</th>
+                            </thead>
+                            <tbody style="font-weight:600;" *ngFor="let exclude of excludedInstallationDetails">
+                                <tr class="bl-blue table-card">
+                                    <td class="center-all pointer">
+                                        <a [routerLink]="['/ocs/asset-details/',exclude?.basicHardwareDto.id]" target="_blank">{{exclude?.basicHardwareDto.id}}</a>
+                                    </td>
+                                    <td class="center-all pointer">
+                                        <a [routerLink]="['/ocs/asset-details/',exclude?.basicHardwareDto.id]" target="_blank">{{exclude?.basicHardwareDto.hardwareName}}</a>
+                                    </td>
+                                    <td class="center-all">{{exclude?.basicHardwareDto.assetCategory.name || 'NA'}}</td>
+                                    <td class="center-all">{{exclude?.basicHardwareDto.assetFamily || 'NA'}}</td>
+                                    <td class="center-all">{{exclude?.basicHardwareDto.serialNumber || 'NA'}}</td>
+                                    <td class="center-all" style="word-break: break-all">{{exclude?.basicHardwareDto.connectedUser || 'NA'}}</td>
+                                    <td class="center-all">{{exclude?.basicHardwareDto.supportEndDate || 'NA'}}</td>
+                                    <td class="center-all">{{exclude?.basicHardwareDto.assetStatus.name || 'NA'}}</td>
+                                    <td class="center-all">{{exclude?.basicHardwareDto.sourceName || 'NA'}}</td>
+                                    <td class="center-all">{{exclude.reason || 'NA'}}</td>
+                                    <td class="center-all">{{exclude.licenseName || 'NA'}}</td>
+                                    <td class="center-all">{{exclude.comments || 'NA'}}</td>
+                                </tr>
+                                <br>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="table-part" *ngIf="excludedInstallationDetails.length == 0 && !dataLoader">
+                    <div>
+                        <h6 class="center-all" style="padding: 10px">No Data Availble.</h6>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+
+    </div>
+</div>

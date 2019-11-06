@@ -1,0 +1,107 @@
+<div *ngIf="dataLoader" class="m-t-25">
+  <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+</div>
+<div *ngIf="!dataLoader">
+  <div class="row mr-0 ml-0 m-t-15">
+    <div class="row col-md-12">
+        <h5 class="col-md-6 pl-0 pr-0 text-color-label">Existing Data</h5>
+        <div class="col-md-6 mb-1">
+        <button type="button" class="btn btn-primary bg-set pull-right m-l-10" style = "margin-right: -43px" (click)="openModal(template)" [disabled] = "this.allSelectedExistingData.length == 0 && this.allSelectedNewCiData.length == 0">Merge</button>
+        <button type="button" class="btn btn-primary bg-set pull-right" (click)="updateDelta()">Update</button>
+        </div>
+    </div>
+    <div class="box m-b-15">
+      <accordion>
+        <accordion-group class="p-b-5" [title] = "hardware.key" *ngFor="let hardware of hardwareDetails |keyvalue">
+          <button class="btn btn-link btn-block clearfix" accordion-heading>
+            <div class="pull-left float-left">{{hardware.key}}</div>
+            <i class="fa fa-angle-double-right pull-right" style="font-size: 20px;" aria-hidden="true"></i>
+          </button>
+          <div class="table-part">
+            <div class="col-md-12" style = "max-height: 228px;overflow-y: auto">
+              <table class="table">
+                <thead>
+                  <th class="center-all">
+                    <mat-checkbox [checked]="hardware.isChecked" (change)="onSelectAll($event, hardware)"></mat-checkbox>
+                  </th>
+                  <!-- <th class="center-all">Asset Name</th> -->
+                  <th class="center-all">Field Name</th>
+                  <th class="center-all">Orignal Value</th>
+                  <th class="center-all">Changed Value</th>
+                </thead>
+                <tbody style="font-weight:600;">
+                  <tr class="bl-blue table-card" *ngFor="let existingData of hardware.value; let i=index">
+                    <td class="center-all">
+                      <mat-checkbox [checked]="existingData.isChecked" (change)="onChange($event,i,existingData, hardware)"></mat-checkbox>
+                    </td>
+                    <!-- <td class="center-all">{{existingData.ciName || 'NA'}}</td> -->
+                    <td class="center-all">{{existingData.attributeName.name || 'NA'}}</td>
+                    <td class="center-all">{{existingData.orignalValue || 'NA'}}</td>
+                    <td class="center-all">{{existingData.changedValue || 'NA'}}</td>
+                  </tr>
+                  <br>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </accordion-group>
+      </accordion>
+      <div *ngIf = "(hardwareDetails | json) == '{}'">
+          <h6 class="center-all">No data available.</h6>
+        </div>
+    </div>
+  </div>
+
+  <div class="row mr-0 ml-0">
+    <h5 class="col-md-6 pl-0 pr-0 text-color-label">Newly Added CI's</h5>
+    <div class="box">
+      <div class="table-part" *ngIf="newDataDetails.length > 0">
+        <div class="col-md-12" style = "max-height: 400px;overflow-y: auto">
+          <table class="table">
+            <thead>
+              <th class="center-all">
+                <mat-checkbox [checked]="selectAllNewCis" (change)="onNewCiSelectAll($event, newDataDetails)"></mat-checkbox>
+              </th>
+              <th class="center-all">Computer Name</th>
+              <th class="center-all">Connected User</th>
+              <th class="center-all">Operating system</th>
+              <th class="center-all">Cpu Type</th>
+              <th class="center-all">User Agent</th>
+            </thead>
+            <tbody style="font-weight:600;">
+              <tr class="bl-blue table-card" *ngFor="let newData of newDataDetails; let i=index">
+                <td class="center-all">
+                  <mat-checkbox [checked]="newData.isChecked" (change)="onNewCiChange($event,i,newData)"></mat-checkbox>
+                </td>
+                <td class="center-all">{{newData.hardwareDetails.name || 'NA'}}</td>
+                <td class="center-all">{{newData.connectedUser || 'NA'}}</td>
+                <td class="center-all">{{newData.operatingSystem || 'NA'}}</td>
+                <td class="center-all">{{newData.cpuType || 'NA'}}</td>
+                <td class="center-all">{{newData.userAgent || 'NA'}}</td>
+              </tr>
+              <br>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div *ngIf="newDataDetails.length == 0">
+        <h6 class="center-all">No data available.</h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+    <div class="modal-body text-center">
+      <p style="font-size: 18px;">Do You Want To Merge?</p>
+      <button type="button" class="btn btn-primary bg-set" (click)="confirm(mergeInProgressTemp)">Yes</button>
+      <button type="button" class="btn btn-primary bg-set m-l-10" (click)="decline()">No</button>
+    </div>
+  </ng-template>
+
+  <ng-template #mergeInProgressTemp>
+      <div class="modal-body text-center">
+        <p style="font-size: 18px;">In Progress...</p>
+        <mat-progress-spinner style="margin:0 auto;" color="primary" [diameter]="30"  strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+      </div>
+    </ng-template>

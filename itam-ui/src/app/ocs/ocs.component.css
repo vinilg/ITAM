@@ -1,0 +1,283 @@
+/* table styles */
+
+.table-part {
+    padding: 5px;
+    margin-top: 10px;
+    background: #f6f6f6;
+    max-width: 100%;
+    overflow-x: auto;
+}
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 0px solid #dee2e6;
+}
+.table td, .table th {
+    padding: 8px;
+    vertical-align: top;
+    border-top: 0px solid #dee2e6;
+}  
+tr.table-card>td {
+    padding-bottom: 10px;
+}
+.table-card {
+    color: #333333;
+    font-size: 13px;
+    font-family: "Gotham-Medium" !important;
+    text-align: left;
+    max-width: 135px !important;
+    border: 2px solid #e2e2e2;
+    padding: 3px;
+    box-shadow: 0px 1px 1px 1px #e2e2e2;
+    margin-bottom: 1%;
+    margin-left: 15px;
+    font-weight: 500;
+    background: white;
+}
+br {
+    display: block;
+    content: "";
+    margin-top: 7px;
+}
+
+/* <a> tag styles */
+
+a {
+    color: #2274a5 !important;
+    font-size: 11px;
+    font-weight: 600;
+}
+  
+a.disabledlink {
+    color: grey;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+  
+.fa {
+    color: #2274a5;
+}
+
+.record-count {
+    font-weight: 600;
+    color:#848282;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.m-t-25{
+    margin-top: 25px;
+}
+
+.m-b-15{
+    margin-bottom: 15px;
+}
+
+.p-b-5{
+    padding-bottom: 5px;
+}
+
+.m-l-10{
+    margin-left: 10px;
+}
+
+.not-found{
+    display: block;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.inst-numb{
+    margin-left: 20px;
+    font-size: 25px;
+    color: #2274a5 !important;
+    position: absolute;
+    margin-top: -10px;
+}
+.inst-icon{
+    font-size: 25px !important;
+    color: #6f6f6f;
+}
+.inst-name{
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 15px;
+    font-size: 13px;
+    color: #6f6f6f;
+}
+.m-l-35{
+    margin-left: 35px;
+}
+.m-t-30{
+    margin-top: 30px !important;
+}
+
+.fs-15{
+    font-size: 15px !important;
+}
+
+.fs-18{
+    font-size: 18px !important;
+}
+
+.fs-20{
+    font-size: 20px !important;
+}
+
+.bg-gray{
+    background-color: #f6f6f6 !important;
+}
+.form-label{
+    padding: 11px;
+}
+.form-list{
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 15px;
+}
+.form-field{
+    padding: 11px;
+}
+
+.form-field-color{
+    color:#6b5c5c
+}
+
+.lineUnder{
+    border-bottom:1px solid #dee2e6;
+}
+.bg-lightGray {
+    background-color: #f6f6f6 !important;
+    padding: 10px;    
+}
+.big-text {
+    font-size: 15px;
+    margin-left: -15px;
+    margin-top: -5px;
+}
+.formsFields{
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
+.bg-set{
+    padding: 4px 26px;
+    background-color: #2274a5;
+    border-color: #2274a5;
+}
+
+.bg-set-secondary{
+    padding: 4px 26px;
+    background-color: #6c757db8;
+    border-color: #6c757db8;
+}
+label{
+    font-size: 13px;
+}
+
+.selectTopMargin{
+    margin-top: -7px;
+}
+.openClose{
+    margin-top: -15px;   
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    text-align: center;
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color:#2274a5;
+    font-size: 14px;
+    font-weight: 900;
+    border:2px solid white;
+    
+}
+.glypTop{
+    top: 5px !important;
+}
+
+.advanced-search-icon{
+    color: #f8f9fa !important; 
+    margin-top: 5px;
+
+}
+
+.m-l-40{
+    margin-left: -40px;
+    }
+
+.card-height{
+    height: 27em;
+}
+
+.mat-form-field{
+    width: 100%;
+    color: #d8d8d8;
+    margin-top: -8px;
+}
+
+.mat-input-element{
+    color: #495057;
+    font-family: 'Gotham-Book';
+}
+
+.mandate::after {
+    content: '*';
+    color: red;
+    font-size: 15px;
+}
+
+.errorMsg{
+    font-size: 12px;
+    color: red;
+}
+
+.input-error{
+    border-bottom: 1px solid red;
+}
+
+.error-text{
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 11px;
+    color: #dc3545;
+}
+
+.license-num{
+    margin-top: -25px;
+    font-size: 20px;
+    position: absolute;
+    color: #053c5d !important;
+}
+
+.license-data{
+    margin-left: 15px;
+    font-size: 13px;
+}
+
+.mat-spinner{
+    position: absolute;
+    margin-left: 295px;
+    margin-top: 15px;
+}
+
+.downloading-label{
+    position: absolute;
+    margin-left: 342px;
+    margin-top: 15px;
+}
+
+.max-height{
+    max-height: 400px;
+}
+
+.card-header-color{
+    background-color: #2274a5;
+}
+
+.card-header-label{
+    color:#ffffff;
+}

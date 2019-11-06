@@ -1,0 +1,87 @@
+{
+    "softwareTilesData":{
+        "totalLicenses":10,
+        "unUsedLicenses":1,
+        "rarelyUsedLicenses":8,
+        "expiredLicenseCount":2
+    },
+    "complianceData":[{
+        "name": "Under Licensed",
+        "y": 0
+      },
+      {
+        "name": "Over Licensed",
+        "y": 1
+      },
+      {
+        "name": "Compliant",
+        "y": 1
+      },
+      {
+        "name": "NA",
+        "y": 3
+      }],
+    
+    "categoryData":{
+        "softwareCategories":["Multimedia","Internet","Graphics","Operating System","Development","Database","Accounting", "Others"],
+        "softwareCategoriesData": [{
+            "name": "Multimedia",
+            "y": 1
+          },
+          {
+            "name": "Internet",
+            "y": 1
+          },
+          {
+            "name": "Graphics",
+            "y": 0
+          },
+          {
+            "name": "Operating System",
+            "y": 0
+          },
+          {
+            "name": "Development",
+            "y": 1
+          },
+          {
+            "name": "Database",
+            "y": 0
+          }, 
+          {
+            "name": "Accounting",
+            "y": 0
+          }, 
+          {
+            "name": "Others",
+            "y": 2
+          }]
+    },
+    "softwareTypeData":[
+        {
+            "name": "Excluded",
+            "y": 0
+          }, 
+          {
+            "name": "Freeware",
+            "y": 1
+          }, 
+          {
+            "name": "Managed",
+            "y": 2
+          }, 
+          {
+            "name": "Prohibited",
+            "y": 1
+          }, 
+          {
+            "name": "Shareware",
+            "y": 0
+          }, 
+          {
+            "name": "Un–Identified",
+            "y": 1
+          }
+    ]
+    
+}
