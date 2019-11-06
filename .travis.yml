@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - CD itam_ui
+  - cd itam_ui
   - docker build -t vinilg/itam_1 -f Dockerfile.dev .
 
 script:
