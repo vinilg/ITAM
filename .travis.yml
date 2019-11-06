@@ -3,8 +3,8 @@ services:
   - docker
 
 before_install:
-  - cd itam_ui
   - docker build -t vinilg/itam_1 -f Dockerfile.dev .
 
 script:
+  - cd itam_ui
   - docker run vinilg/itam_1 npm run test -- --coverage
